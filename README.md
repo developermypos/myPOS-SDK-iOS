@@ -51,16 +51,16 @@ Payment processing
 
 4.        Reprint last receipt
 
-## Installation
+# Installation
 
-## Preparing your Xcode project
+# Preparing your Xcode project
 1.	Add the myPOSService.framework to your Xcode project.
 2.	Link your app against myPOSService.framework.
 
-# Privacy Info plist keys
+## Privacy Info plist keys
 NSBluetoothPeripheralUsageDescription
 
-# Initialization
+## Initialization
 Make sure the framework is imported.
 
 ### Objective-C

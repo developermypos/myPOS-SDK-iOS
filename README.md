@@ -51,7 +51,7 @@ Payment processing
 
 4.        Reprint last receipt
 
-# [Installation]
+[Installation]:# Installation
 
 # Preparing your Xcode project
 1.	Add the myPOSService.framework to your Xcode project.

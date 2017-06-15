@@ -18,37 +18,21 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 ### Table of Contents
 
 * [Installation](#installation)
-
   * [Preparing your Xcode project](#preparing-your-xcode-project)
-
   * [Privacy Info plist keys](#privacy-info-plist-keys)
-
 * [Initialization](#initialization)
-
   * [Make sure the framework is imported](#make-sure-the-framework-is-imported)
-
   * [Call the initialization method](#call-the-initialization-method)
-
   * [Custom navigation title](#custom-navigation-title)
-
 * [Payment request](#payment-request)  
-  
   * [Checkout requests](#checkout-requests)
-  
   * [Refund request](#refund-requst)  
-  
   * [Initiate checkout request](#initiate-checkout-request)
-  
   * [Initiate refund request](#initiate-refund-request)
-  
   * [Reprint last receipt](#reprint-last-receipt)
-
 * [Terminal mangement](#terminal-management)
-
   * [Update terminal software](#update-terminal-software)
-  
   * [Activate terminal](#activate-terminal)
-  
   * [Deactivate terminal](#deactivate-terminal)
   
   

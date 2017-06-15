@@ -17,7 +17,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 ### Table of Contents
 
-[Installation][Installation]
+[Installation]
 
 Preparing your Xcode project
 

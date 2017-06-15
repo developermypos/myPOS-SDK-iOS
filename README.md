@@ -17,15 +17,15 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 ### Table of Contents
 
-*[Installation](#installation)
+* [Installation](#installation)
 
-..*[Preparing your Xcode project](#preparing-your-xcode-project)
+..* [Preparing your Xcode project](#preparing-your-xcode-project)
 
-..*[Privacy Info plist keys](#privacy-info-plist-keys)
+..* [Privacy Info plist keys](#privacy-info-plist-keys)
 
-..*[Initialization](#Initialization)
+..* [Initialization](#Initialization)
 
-*[Call the initialization method](#call-the-initialization-method)
+* [Call the initialization method](#call-the-initialization-method)
 
 Currency change if needed
 

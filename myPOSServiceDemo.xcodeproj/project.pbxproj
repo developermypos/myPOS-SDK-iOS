@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D057BF31EF26F2F00940160 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D057BF21EF26F2F00940160 /* Images.xcassets */; };
+		1D0AEA2A1EEAAC5100F4A8CD /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */; };
+		1D49BF7E1EEFE7690068B2C7 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D49BF7D1EEFE7690068B2C7 /* Utils.m */; };
+		1D49BF811EEFE7740068B2C7 /* UIAlertController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D49BF801EEFE7740068B2C7 /* UIAlertController+Helpers.m */; };
+		1D5F4FF31EF1188500C0287A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F4FF21EF1188500C0287A /* ViewController.m */; };
+		1D91FAE11EEFB69A00254AD0 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D91FAE01EEFB69A00254AD0 /* TableViewController.m */; };
+		1DA373AA1EE8124100E2209E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3739C1EE8115100E2209E /* AppDelegate.m */; };
+		1DB5D9CF1C43982F002B4643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5D9CE1C43982F002B4643 /* main.m */; };
+		1DB5D9D81C43982F002B4643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9D61C43982F002B4643 /* Main.storyboard */; };
+		1DB5D9DD1C43982F002B4643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */; };
+		1DE43F351DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */; };
+		1DE43F361DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1DE43F371DCCB5AA00EE6E41 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1DE43F361DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1D057BF21EF26F2F00940160 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1D0AEA281EEAA9F000F4A8CD /* myPOSServiceDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myPOSServiceDemo.entitlements; sourceTree = "<group>"; };
+		1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		1D49BF7C1EEFE7690068B2C7 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1D49BF7D1EEFE7690068B2C7 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		1D49BF7F1EEFE7740068B2C7 /* UIAlertController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Helpers.h"; sourceTree = "<group>"; };
+		1D49BF801EEFE7740068B2C7 /* UIAlertController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Helpers.m"; sourceTree = "<group>"; };
+		1D5F4FF11EF1188500C0287A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1D5F4FF21EF1188500C0287A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1D91FADF1EEFB69A00254AD0 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		1D91FAE01EEFB69A00254AD0 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		1DA3739B1EE8115100E2209E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1DA3739C1EE8115100E2209E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1DB5D9CA1C43982F002B4643 /* myPOSServiceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPOSServiceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DB5D9CE1C43982F002B4643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1DB5D9D71C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1DB5D9DC1C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1DB5D9DE1C43982F002B4643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myPOSBluetoothSDK.framework; path = myPOSServiceDemo/myPOSBluetoothSDK.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DB5D9C71C43982F002B4643 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0AEA2A1EEAAC5100F4A8CD /* ExternalAccessory.framework in Frameworks */,
+				1DE43F351DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D49BF7A1EEFE7560068B2C7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1D49BF7F1EEFE7740068B2C7 /* UIAlertController+Helpers.h */,
+				1D49BF801EEFE7740068B2C7 /* UIAlertController+Helpers.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		1D49BF7B1EEFE75B0068B2C7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1D49BF7C1EEFE7690068B2C7 /* Utils.h */,
+				1D49BF7D1EEFE7690068B2C7 /* Utils.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1DA3739A1EE8115100E2209E /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3739B1EE8115100E2209E /* AppDelegate.h */,
+				1DA3739C1EE8115100E2209E /* AppDelegate.m */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		1DA3739D1EE8115100E2209E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D5F4FF11EF1188500C0287A /* ViewController.h */,
+				1D5F4FF21EF1188500C0287A /* ViewController.m */,
+				1D91FADF1EEFB69A00254AD0 /* TableViewController.h */,
+				1D91FAE01EEFB69A00254AD0 /* TableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1DA373A61EE8115700E2209E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1DB5D9D61C43982F002B4643 /* Main.storyboard */,
+				1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1DB5D9C11C43982F002B4643 = {
+			isa = PBXGroup;
+			children = (
+				1DB5D9CC1C43982F002B4643 /* myPOSServiceDemo */,
+				1DB5D9CB1C43982F002B4643 /* Products */,
+				1DE43F321DCCB55700EE6E41 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1DB5D9CB1C43982F002B4643 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DB5D9CA1C43982F002B4643 /* myPOSServiceDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DB5D9CC1C43982F002B4643 /* myPOSServiceDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1D49BF7A1EEFE7560068B2C7 /* Categories */,
+				1DA3739D1EE8115100E2209E /* Controllers */,
+				1DA3739A1EE8115100E2209E /* Global */,
+				1D49BF7B1EEFE75B0068B2C7 /* Helpers */,
+				1DA373A61EE8115700E2209E /* UI */,
+				1D057BF21EF26F2F00940160 /* Images.xcassets */,
+				1DB5D9CD1C43982F002B4643 /* Supporting Files */,
+			);
+			path = myPOSServiceDemo;
+			sourceTree = "<group>";
+		};
+		1DB5D9CD1C43982F002B4643 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D0AEA281EEAA9F000F4A8CD /* myPOSServiceDemo.entitlements */,
+				1DB5D9DE1C43982F002B4643 /* Info.plist */,
+				1DB5D9CE1C43982F002B4643 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DE43F321DCCB55700EE6E41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */,
+				1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DB5D9C91C43982F002B4643 /* myPOSServiceDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DB5D9E11C43982F002B4643 /* Build configuration list for PBXNativeTarget "myPOSServiceDemo" */;
+			buildPhases = (
+				1DB5D9C61C43982F002B4643 /* Sources */,
+				1DB5D9C71C43982F002B4643 /* Frameworks */,
+				1DB5D9C81C43982F002B4643 /* Resources */,
+				1DE43F371DCCB5AA00EE6E41 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myPOSServiceDemo;
+			productName = myPOSServiceDemo;
+			productReference = 1DB5D9CA1C43982F002B4643 /* myPOSServiceDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DB5D9C21C43982F002B4643 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Intercard Finance AD";
+				TargetAttributes = {
+					1DB5D9C91C43982F002B4643 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2SSZUB73NA;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1DB5D9C51C43982F002B4643 /* Build configuration list for PBXProject "myPOSServiceDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DB5D9C11C43982F002B4643;
+			productRefGroup = 1DB5D9CB1C43982F002B4643 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DB5D9C91C43982F002B4643 /* myPOSServiceDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DB5D9C81C43982F002B4643 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D057BF31EF26F2F00940160 /* Images.xcassets in Resources */,
+				1DB5D9DD1C43982F002B4643 /* LaunchScreen.storyboard in Resources */,
+				1DB5D9D81C43982F002B4643 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DB5D9C61C43982F002B4643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D5F4FF31EF1188500C0287A /* ViewController.m in Sources */,
+				1DA373AA1EE8124100E2209E /* AppDelegate.m in Sources */,
+				1D91FAE11EEFB69A00254AD0 /* TableViewController.m in Sources */,
+				1DB5D9CF1C43982F002B4643 /* main.m in Sources */,
+				1D49BF811EEFE7740068B2C7 /* UIAlertController+Helpers.m in Sources */,
+				1D49BF7E1EEFE7690068B2C7 /* Utils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1DB5D9D61C43982F002B4643 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DB5D9D71C43982F002B4643 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DB5D9DC1C43982F002B4643 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DB5D9DF1C43982F002B4643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DB5D9E01C43982F002B4643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DB5D9E21C43982F002B4643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = myPOSServiceDemo/myPOSServiceDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2SSZUB73NA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/myPOSServiceDemo",
+				);
+				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icard.mypos.serviceDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i368";
+			};
+			name = Debug;
+		};
+		1DB5D9E31C43982F002B4643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = myPOSServiceDemo/myPOSServiceDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2SSZUB73NA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/myPOSServiceDemo",
+				);
+				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.icard.mypos.serviceDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i368";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DB5D9C51C43982F002B4643 /* Build configuration list for PBXProject "myPOSServiceDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DB5D9DF1C43982F002B4643 /* Debug */,
+				1DB5D9E01C43982F002B4643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DB5D9E11C43982F002B4643 /* Build configuration list for PBXNativeTarget "myPOSServiceDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DB5D9E21C43982F002B4643 /* Debug */,
+				1DB5D9E31C43982F002B4643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DB5D9C21C43982F002B4643 /* Project object */;
+}

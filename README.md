@@ -8,7 +8,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 ### Prerequisites
 
-1. Merchant account on [www.myPOSeu](https://www.mypos.eu/) (or received a test account).
+1. Merchant account on [www.myPOS.eu](https://www.mypos.eu/) (or received a test account).
 2. Received myPOS terminal
 3. Requested Access   [Developers myPOS](http://developers.mypos.eu) site.
 4. Deployment Target iOS 6.0 or later.

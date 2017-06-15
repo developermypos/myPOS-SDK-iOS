@@ -53,241 +53,181 @@ Payment processing
 
 # Installation
 
-## Preparing your Xcode project
+# Preparing your Xcode project
+1.	Add the myPOSService.framework to your Xcode project.
+2.	Link your app against myPOSService.framework.
 
-1. Add the myPOSService.framework to your Xcode project.
-2. Link your app against myPOSService.framework.
-
-## Privacy Info plist keys
-
+# Privacy Info plist keys
 NSBluetoothPeripheralUsageDescription
 
-Note:
-You can use the [sample app](https://github.com/developermypos/repo1/tree/master/myPOSServiceDemo) that is provided with the myPOS SDK iOS as a reference project.
-
-iOS SDK enabling to integrate Apps with myPOS Card Terminals for Card Payments processing
-
 # Initialization
-
-## Make sure the framework is imported.
-
-### **Objective-C**
-
-#import &lt;myPOSBluetoothSDK/myPOSService.h&gt;
-
-### **Swift**
-
-If you are using swift, you will need to create a bridging header and import the framework there. For more information about bridging headers, please visit [Apple&#39;s documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html).
-
-## Call the initialization method
-
-Call the initialization method while passing the currency for financial operations (purchase, refund, etc.)
-
-### **Objective-C**
-
-[myPOSService initializeWithCurrency:ICTerminalCurrencyEUR delegate:self];
-
-### **Swift**
-
-myPOSService.initialize(withCurrency: ICTerminalCurrencyEUR, delegate: self)
-
-## Currency change if needed
-
-If at some point the currency needs to be changed, the below method can be used to set the new currency.
-
-**Objective-C**
-
-[myPOSService changeCurrency:newCurrency];
-
-**Swift**
-
-myPOSService.changeCurrency(newCurrency)
-
-## Common delegate Methods
-
-**Objective-C**
-
-- (void)serviceDidStart;
-
-- (void)serviceDidStop;
-
-- (void)posReadyToProcessCommands;
-
-- (void)didReceiveInfoFromTerminal:(NSNumber \*)informationCode;
-
-**Swift**
-
-func serviceDidStart() { }
-
-func serviceDidStop() { }
-
-func didReceiveInfo(fromTerminal informationCode: NSNumber) { }
-
-func posReadyToProcessCommands() { }
-
-# Manage Card terminal
-
-1. 1.Activate terminal:
-
-Before using terminal for a first time the SDK has to initiate Terminal activation, which will setup terminal for processing transaction, setting up Terminal ID, Merchant ID etc.
-
-### **Example:**
-
-### **Objective-C**
-
-[myPOSService activateTerminalWithOnSuccess:^{
-
-} onError:^(NSError \* \_Nonnull error) {
-
-}];
-
-### **Swift**
-
-myPOSService.activateTerminalWith(onSuccess: {
-
-}) { (error) in
-
-}
-
-1. 2.Update terminal software:
-
-Each time terminal processing transaction, processor host checks for existing pending updates, and inform terminal if any. In that case by this method software update is activated, and terminal is going in the update mode.
-
-### **Example:**
+Make sure the framework is imported.
 
 ### Objective-C
-
-[myPOSService updateTerminalWithOnSuccess:^{
-
-} onError:^(NSError \* \_Nonnull error) {
-
-}];
-
+```obj-c
+#import <myPOSBluetoothSDK/myPOSBluetoothSDK.h>
+```
 ### Swift
+If you are using swift, you will need to create a bridging header and import the framework there. For more information about bridging headers, please visit  [Apple's documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html).
 
-myPOSService.updateTerminalWith(onSuccess: {
-
-}) { (error) in
+Call the initialization method while passing the currency for financial operations (purchase, refund, etc.)
+### Objective-C
+```obj-c                                                                    
+[myPOSService startInitializationFromController:self
+                                 withCompletion:^(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error) {
+                                     
+                                 }];
+```
+### Swift
+```Swift
+myPOSService.startInitialization(from: self) { (posDeviceMode, error) in
 
 }
+```
 
-1. 3.Deactivate terminal:
 
-### **Example:**
+## You can set a custom navigation title in the SDK screens, by using the method below:
+### Objective-C
+```obj-c
+[myPOSService setAppName:@"My App Name"];
+```
+### Swift
+```swift
+myPOSService.setAppName("My App Name")
+```
 
-### **Objective-C**
 
-[myPOSService deactivateTerminalWithOnSuccess:^{
+# Checkout/Refund requests
+A checkout and refund request are generated identiacally by passing an amount, currency, and item name.
+## 1. Checkout request
+### Objective-C
+```obj-c
+MPCheckoutRequest *checkoutRequest = [MPCheckoutRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
+                                                                   title:@"Some item"
+                                                                currency:MPCurrencyEUR];
+```
+### Swift
+```swift
+let checkoutRequest = MPCheckoutRequest(total: NSDecimalNumber(string: "1.00"),
+                                        title: "Some item",
+                                        currency: .EUR)
+```
 
-} onError:^(NSError \* \_Nonnull error) {
+## 2. Refund request
+### Objective-C
+```obj-c
+MPRefundRequest *refundRequest = [MPRefundRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
+                                                             title:@"Some item"
+                                                          currency:MPCurrencyEUR];
+```
+### Swift
+```swift
+let refundRequest = MPRefundRequest(total: NSDecimalNumber(string: "1.00"),
+                                    title: "Some item",
+                                    currency: .EUR)
+```
 
+Please note that you need to pass an ```NSDecimalNumber``` as the total value. While ```NSDecimalNumber``` is a subclass of ```NSNumber``` it is not advised to use the convenience method of ```NSNumber``` to create an ```NSDecimalNumber```
+
+##### An optional transaction reference of type ```NSString``` can be passed to the request.
+### Objective-C
+```obj-c
+[request setTransactionReference:@"my_transaction_reference"];
+```
+### Swift
+```swift
+request.setTransactionReference("my_transaction_reference")
+```
+
+
+# POS Commands
+## 1. Make purchase example:
+### Objective-C
+```obj-c                                                                
+[myPOSService checkoutWithRequest:checkoutRequest
+               fromViewController:self
+                       completion:^(NSError * _Nullable error) {
+                           
+                       }];
+```
+### Swift
+```Swift
+
+
+myPOSService.checkout(with: checkoutRequest, from: self) { (error) in
+    
+}
+```
+
+
+## 2. Make refund example:
+### Objective-C
+```obj-c
+[myPOSService requestRefund:refundRequest
+         fromViewController:self
+                 completion:^(NSError * _Nullable error) {
+                     
+                 }];
+```
+### Swift
+```Swift
+myPOSService.requestRefund(refundRequest, from: self) { (error) in
+    
+}
+```
+
+## 3. Update terminal software:
+### Objective-C
+```obj-c
+[myPOSService requestUpdateTerminalFromController:self withCompletion:^(NSError * _Nullable error) {
+    
 }];
-
-### **Swift**
-
-myPOSService.deactivateTerminalWith(onSuccess: {
-
-}) { (error) in
-
+```
+### Swift
+```Swift
+myPOSService.requestUpdateTerminal(from: self) { (error) in
+    
 }
+```
 
-# Payment processing
-
-1. 1.Make payment
-
-Once initialization is completed, you can start using the myPOS SDK iOS to accept card payments.
-
-Host application has to specify amount of the transaction, print slip option – automated print of the slip after transaction, or without automated printing.
-
-Make purchase request, encapsulates information regarding the transaction and start payment by using the Make purchase request below:
-
-### **Example:**
-
-**Objective-C**
-
-[myPOSService makePurchaseFor:@&quot;1.00&quot;
-
-                    onSuccess:^{
-
-                    } onError:^(NSError \* \_Nonnull error) {
-
-                    }];
-
-**Swift**
-
-myPOSService.makePurchase(for: &quot;1.00&quot;, onSuccess: {
-
-}) { (error) in
-
-}
-
-1. 2.Make reversal:
-
-With this method host application could initiate reversal of the last transaction.
-
-### **Example:**
-
-**Objective-C**
-
-[myPOSService makeReversalWith
-
-                OnSuccess:^{
-
-                } onError:^(NSError \* \_Nonnull error) {
-
-                }];
-
-### **Swift**
-
-myPOSService.makeReversalWith(onSuccess: {
-
-}) { (error) in
-
-}
-
-1. 3.Make refund:
-
-With this method host application could initiate refund transaction to the customers&#39; card account with the specified amount.
-
-### **Example:**
-
-### **Objective-C**
-
-[myPOSService makeRefundFor:@&quot;1.00&quot;
-
-                  onSuccess:^{
-
-                  } onError:^(NSError \* \_Nonnull error) {
-
-                  }];
-
-### **Swift**
-
-myPOSService.makeRefund(for: &quot;1.00&quot;, onSuccess: {
-
-}) { (error) in
-
-}
-
-1. 4.Reprint last receipt:
-
-With this method host application could request reprint of last transaction slip.
-
-### **Example:**
-
-### **Objective-C**
-
-[myPOSService reprintLastReceiptWithOnSuccess:^{
-
-} onError:^(NSError \* \_Nonnull error) {
-
+## 4. Activate terminal:
+### Objective-C
+```obj-c
+[myPOSService requestActivateTerminalFromController:self withCompletion:^(NSError * _Nullable error) {
+    
 }];
-
-### **Swift**
-
-myPOSService.reprintLastReceiptWith(onSuccess: {
-
-}) { (error) in
-
+```
+### Swift
+```Swift
+myPOSService.requestActivateTerminal(from: self) { (error) in
+    
 }
+```
 
+## 5. Deactivate terminal:
+### Objective-C
+```obj-c
+[myPOSService requestDeactivateTerminalFromController:self withCompletion:^(NSError * _Nullable error) {
+    
+}];
+```
+### Swift
+```Swift
+myPOSService.requestDeactivateTerminal(from: self) { (error) in
+    
+}
+```
+
+## 6. Reprint last receipt:
+### Objective-C
+```obj-c
+[myPOSService reprintLastReceiptWithCompletion:^(NSError * _Nullable error) {
+    
+}];
+```
+### Swift
+```Swift
+myPOSService.reprintLastReceipt { (error) in
+    
+}
+```

@@ -31,25 +31,25 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
   * [Custom navigation title](#custom-navigation-title)
 
-*[Payment request](#payment-request)  
+* [Payment request](#payment-request)  
   
-  * [Checkout requests](#checkout-requests)
+ * [Checkout requests](#checkout-requests)
   
-  * [Refund request](#refund-requst)  
+ * [Refund request](#refund-requst)  
   
-  * [Initiate checkout request](#initiate-checkout-request)
+ * [Initiate checkout request](#initiate-checkout-request)
   
-  * [Initiate refund request](#initiate-refund-request)
+ * [Initiate refund request](#initiate-refund-request)
   
-  * [Reprint last receipt](#reprint-last-receipt)
+ * [Reprint last receipt](#reprint-last-receipt)
 
-*[Terminal mangement](#terminal-management)
+* [Terminal mangement](#terminal-management)
 
-  * [Update terminal software](#update-terminal-software)
+ * [Update terminal software](#update-terminal-software)
   
-  * [Activate terminal](#activate-terminal)
+ * [Activate terminal](#activate-terminal)
   
-  * [Deactivate terminal](#deactivate-terminal)
+ * [Deactivate terminal](#deactivate-terminal)
   
   
   

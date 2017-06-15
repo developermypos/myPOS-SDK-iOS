@@ -31,8 +31,8 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Initiate refund request](#initiate-refund-request)
   * [Reprint last receipt](#reprint-last-receipt)
 * [Terminal mangement](#terminal-management)
-  * [Update terminal software](#update-terminal-software)
   * [Activate terminal](#activate-terminal)
+  * [Update terminal software](#update-terminal-software)
   * [Deactivate terminal](#deactivate-terminal)
   
   

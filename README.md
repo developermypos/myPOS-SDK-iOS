@@ -19,7 +19,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 [Installation](#installation)
 
-Preparing your Xcode project
+[Preparing your Xcode project] (#preparing-your-xcode-project)
 
 Privacy Info plist keys
 
@@ -53,7 +53,7 @@ Payment processing
 
 ## Installation
 
-# Preparing your Xcode project
+## Preparing your Xcode project
 1.	Add the myPOSService.framework to your Xcode project.
 2.	Link your app against myPOSService.framework.
 

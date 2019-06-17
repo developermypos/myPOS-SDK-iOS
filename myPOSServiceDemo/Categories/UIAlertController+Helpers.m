@@ -45,6 +45,38 @@
     [sender presentViewController:alertController animated:YES completion:nil];
 }
 
++ (void)showReceiptOptionsFromController:(UIViewController *)sender selectionHandler:(void (^)(MPDeviceReceipt receiptType, NSString *actionTitle))selectionHandler {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Select receipt print option", @"")
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"") style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction *automatically = [UIAlertAction actionWithTitle:@"Automatically" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        selectionHandler(MPDeviceReceiptPrintAutomatically, action.title);
+    }];
+    
+    UIAlertAction *afterConfirmation = [UIAlertAction actionWithTitle:@"After confirmation" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        selectionHandler(MPDeviceReceiptPrintAfterConfirmation, action.title);
+    }];
+    
+    UIAlertAction *onlyMerchantCopy = [UIAlertAction actionWithTitle:@"Only merchant copy" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        selectionHandler(MPDeviceReceiptPrintOnlyMerchantCopy, action.title);
+    }];
+    
+    UIAlertAction *doNotPrint = [UIAlertAction actionWithTitle:@"Do not print" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        selectionHandler(MPDeviceReceiptDoNotPrint, action.title);
+    }];
+    
+    [alertController addAction:cancel];
+    [alertController addAction:automatically];
+    [alertController addAction:afterConfirmation];
+    [alertController addAction:onlyMerchantCopy];
+    [alertController addAction:doNotPrint];
+    
+    [sender presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - Helpers
 
 + (NSArray<NSNumber *> *)availableCurrencies {

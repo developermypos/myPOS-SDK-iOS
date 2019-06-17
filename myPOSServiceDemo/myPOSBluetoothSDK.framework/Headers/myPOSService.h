@@ -71,6 +71,65 @@ typedef NS_ENUM(NSInteger, MPCurrency) {
 };
 
 /*!
+ *  @enum MPLanguage
+ *
+ *  @discussion Available interface languages.
+ */
+typedef NS_ENUM(int, MPLanguage) {
+    MPLanguageEnglish,
+    MPLanguageBulgarian,
+    MPLanguageItalian,
+    MPLanguageCroation,
+    MPLanguageSpanish,
+    MPLanguageGerman,
+    MPLanguageFrench,
+    MPLanguageRomanian,
+    MPLanguageGreek,
+    MPLanguageNetherlandish,
+    MPLanguageLatvian,
+    MPLanguageSwedish,
+    MPLanguagePortuguese,
+    MPLanguageIcelandic,
+    MPLanguageSlovenian,
+    MPLanguageCzech,
+    MPLanguageLithuanian,
+    MPLanguagePolish,
+    MPLanguageHungarian
+};
+
+/*!
+ *  @enum MPDeviceReceipt
+ *
+ *  @discussion Available receipt types for devices with a printer.
+ *
+ *  @constant MPDeviceReceiptPrintAutomatically     Let the device decice. This is the default setting.
+ *  @constant MPDeviceReceiptPrintAfterConfirmation The device will prompt whether to print a customer copy of the receipt.
+ *  @constant MPDeviceReceiptPrintOnlyMerchantCopy  Do not print customer copy.
+ *  @constant MPDeviceReceiptDoNotPrint             Do not print receipt at all.
+ *  @constant MPDeviceReceiptElectron               Send a e-receipt. Available only for devices without a printer.
+ */
+typedef NS_ENUM(int, MPDeviceReceipt) {
+    MPDeviceReceiptPrintAutomatically,
+    MPDeviceReceiptPrintAfterConfirmation,
+    MPDeviceReceiptPrintOnlyMerchantCopy,
+    MPDeviceReceiptDoNotPrint,
+    MPDeviceReceiptElectron,
+};
+
+/*!
+ *  @enum MPReferenceType
+ *
+ *  @discussion Set the type of the reference for financial operations. Default is number.
+ */
+typedef NS_ENUM(int, MPReferenceType) {
+    MPReferenceTypeUnknown,
+    MPReferenceTypeNumber,
+    MPReferenceTypeInvoiceId,
+    MPReferenceTypeProductId,
+    MPReferenceTypeReservationNumber,
+};
+
+/*!
  *  @discussion     An operation completion method with a nullable error.
  *                  If operation has completed successfully, the error will be nil,
  *                  otherwise will contain information what went wrong with the request.
@@ -131,11 +190,54 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 /*!
  *  @method setAppName:
  *
- *  @discussion     Set a custom title value for the navigation's title property in the navigation bar.
+ *  @discussion Set a custom title value for the navigation's title property in the navigation bar.
  *
  *  @param  appName A custom title.
  */
 + (void)setAppName:(nullable NSString *)appName;
+
+/*!
+ *  @method setLanguage:
+ *
+ *  @discussion Set a preferred language for the POS operations.
+ *
+ *  @param  language A language option from the enumerator.
+ */
++ (void)setPreferredLanguage:(MPLanguage)preferredLanguage;
+
+/*!
+ *  @method setDefaultPOSDeviceSerialNumber:
+ *
+ *  @discussion Set the serial number of a POS device to which to connect automatically upon discovery.
+ *
+ *  @param  serialNumber The serial number of a POS device.
+ */
++ (void)setDefaultPOSDeviceSerialNumber:(nullable NSString *)serialNumber;
+
+/*!
+ *  @method setLanguage:
+ *
+ *  @discussion Set a preferred language for the POS operations.
+ *
+ *  @param  language A language option from the enumerator.
+ */
++ (MPLanguage)preferredLanguage;
+
+/*!
+ *  @method defaultSerialNumber:
+ *
+ *  @discussion Getter for the default serial number of a POS device.
+ */
++ (NSString * _Nullable)defaultSerialNumber;
+
+/*!
+ *  @method setReceiptType:
+ *
+ *  @discussion Set a receipt print setting. If the device is has no printer, the parameter will be ignored.
+ *
+ *  @param  receiptType The device print receipt type.
+ */
++ (void)setReceiptType:(MPDeviceReceipt)receiptType;
 
 /*!
  *  @method checkoutWithRequest:fromViewController:completion:
@@ -170,6 +272,20 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
                  completion:(nullable MPRequestCompletion)completion;
 
 /*!
+ *  @method quickCheckoutWithRequest:fromViewController:completion:
+ *
+ *  @param  payment             Payment request object containing information about the operation.
+ *  @param  viewController      The view controller on which a loading HUD will be displayed. A new view controller will not be presented on top of it.
+ *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *
+ *  @see                        MPCheckoutRequest
+ *  @see                        MPRequestCompletion
+ */
++ (void)quickCheckoutWithRequest:(nonnull MPCheckoutRequest *)payment
+              fromViewController:(nonnull UIViewController *)viewController
+                      completion:(nullable MPRequestCompletion)completion;
+
+/*!
  *  @method requestRefund:fromViewController:completion:
  *
  *  @param  payment             Refund request object containing information about the operation.
@@ -200,6 +316,20 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
    fromViewController:(nonnull UIViewController *)viewController
      skipConfirmation:(BOOL)skipConfirmation
            completion:(nullable MPRequestCompletion)completion;
+
+/*!
+ *  @method requestQuickRefund:fromViewController:skipConfirmation:completion:
+ *
+ *  @param  payment             Refund request object containing information about the operation.
+ *  @param  viewController      The view controller on which a loading HUD will be displayed. A new view controller will not be presented on top of it.
+ *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *
+ *  @see                        MPRefundRequest
+ *  @see                        MPRequestCompletion
+ */
++ (void)requestQuickRefund:(nonnull MPRefundRequest *)refundRequest
+        fromViewController:(nonnull UIViewController *)viewController
+                completion:(nullable MPRequestCompletion)completion;
 
 /*!
  *  @method requestReversalFromController:skipConfirmation:completion:

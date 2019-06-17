@@ -17,16 +17,19 @@ typedef enum : NSInteger {
 } TableViewSection;
 
 typedef enum : NSInteger {
-    TableViewOperationRowPayment,    // 0
-    TableViewOperationRowRefund,     // 1
-    TableViewOperationRowReprint,    // 2
-    TableViewOperationRowActivate,   // 3
-    TableViewOperationRowUpdate,     // 4
-    TableViewOperationRowDeactivate, // 5
+    TableViewOperationRowPayment,      // 0
+    TableViewOperationRowQuickPayment, // 1
+    TableViewOperationRowRefund,       // 2
+    TableViewOperationRowQuickRefund,  // 3
+    TableViewOperationRowReprint,      // 4
+    TableViewOperationRowActivate,     // 5
+    TableViewOperationRowUpdate,       // 6
+    TableViewOperationRowDeactivate,   // 7
 } TableViewOperationRow;
 
 typedef enum : NSInteger {
-    TableViewSettingRowCurrency,    // 0
+    TableViewSettingRowCurrency,        // 0
+    TableViewSettingRowPrintReceipt,    // 1
 } TableViewSettingRow;
 
 @interface TableViewController () {
@@ -77,8 +80,16 @@ static CGFloat const kFooterHeight = 30.0f;
                     [self makePurchase];
                     break;
                     
+                case TableViewOperationRowQuickPayment:
+                    [self makeQuickPurchase];
+                    break;
+                    
                 case TableViewOperationRowRefund:
                     [self makeRefund];
+                    break;
+                    
+                case TableViewOperationRowQuickRefund:
+                    [self makeQuickRefund];
                     break;
                     
                 case TableViewOperationRowReprint:
@@ -104,6 +115,10 @@ static CGFloat const kFooterHeight = 30.0f;
                 case TableViewSettingRowCurrency:
                     [self changeCurrency];
                     break;
+                    
+                case TableViewSettingRowPrintReceipt:
+                    [self changePrintReceipt];
+                    break;
             }
             break;
     }
@@ -118,9 +133,20 @@ static CGFloat const kFooterHeight = 30.0f;
     MPCheckoutRequest *checkoutRequest = [MPCheckoutRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
                                                                        title:@"Some item"
                                                                     currency:_currency];
-    [checkoutRequest setTransactionReference:@"my_transaction_reference"];
+    
+    [checkoutRequest setTransactionReference:@"my_transaction_reference" withType:MPReferenceTypeNumber];
     NSLog(@"Request: %@", checkoutRequest);
     [myPOSService checkoutWithRequest:checkoutRequest fromViewController:self completion:[self completion:@"Payment"]];
+}
+
+- (void)makeQuickPurchase {
+    MPCheckoutRequest *checkoutRequest = [MPCheckoutRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
+                                                                       title:@"Some item"
+                                                                    currency:_currency];
+    
+    [checkoutRequest setTransactionReference:@"my_transaction_reference" withType:MPReferenceTypeNumber];
+    NSLog(@"Request: %@", checkoutRequest);
+    [myPOSService quickCheckoutWithRequest:checkoutRequest fromViewController:self completion:[self completion:@"Payment"]];
 }
 
 - (void)makeRefund {
@@ -129,6 +155,14 @@ static CGFloat const kFooterHeight = 30.0f;
                                                               currency:_currency];
     NSLog(@"Request: %@", refundRequest);
     [myPOSService requestRefund:refundRequest fromViewController:self completion:[self completion:@"Refund"]];
+}
+
+- (void)makeQuickRefund {
+    MPRefundRequest *refundRequest = [MPRefundRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
+                                                                 title:@"Some item"
+                                                              currency:_currency];
+    NSLog(@"Request: %@", refundRequest);
+    [myPOSService requestQuickRefund:refundRequest fromViewController:self completion:[self completion:@"Refund"]];
 }
 
 - (void)update {
@@ -153,6 +187,13 @@ static CGFloat const kFooterHeight = 30.0f;
         self.currencyLabel.text = [Utils currencyToString:currency];
         
         [Utils saveCurrency:currency];
+    }];
+}
+
+- (void)changePrintReceipt {
+    [UIAlertController showReceiptOptionsFromController:self selectionHandler:^(MPDeviceReceipt receiptType, NSString *actionTitle) {
+        [myPOSService setReceiptType:receiptType];
+        [self.receiptTypeLabel setText:actionTitle];
     }];
 }
 

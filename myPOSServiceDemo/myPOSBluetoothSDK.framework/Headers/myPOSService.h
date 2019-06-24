@@ -79,7 +79,7 @@ typedef NS_ENUM(int, MPLanguage) {
     MPLanguageEnglish,
     MPLanguageBulgarian,
     MPLanguageItalian,
-    MPLanguageCroation,
+    MPLanguageCroatian,
     MPLanguageSpanish,
     MPLanguageGerman,
     MPLanguageFrench,
@@ -215,11 +215,16 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 + (void)setDefaultPOSDeviceSerialNumber:(nullable NSString *)serialNumber;
 
 /*!
- *  @method setLanguage:
+ *  @method terminalId:
  *
- *  @discussion Set a preferred language for the POS operations.
+ *  @discussion Gets the connected POS terminal TID if available
+ */
++ (NSString *)terminalId;
+
+/*!
+ *  @method preferredLanguage:
  *
- *  @param  language A language option from the enumerator.
+ *  @discussion Gets the preferred language for the POS operations.
  */
 + (MPLanguage)preferredLanguage;
 

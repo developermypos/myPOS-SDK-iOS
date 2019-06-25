@@ -37,6 +37,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 * [Utilities](#utilities)
   * [Default POS device serial number](#default-pos-device-serial-number)
   * [Preferred language](#preferred-language)
+  * [myPOS Terminal ID](#mypos-terminal-id)
   
   
   

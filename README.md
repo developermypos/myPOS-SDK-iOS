@@ -34,7 +34,10 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Activate terminal](#activate-terminal)
   * [Update terminal software](#update-terminal-software)
   * [Deactivate terminal](#deactivate-terminal)
-  
+* [Utilities](#utilities)
+  * [Default POS device serial number](#default-pos-device-serial-number)
+  * [Preferred language](#preferred-language)
+  * [myPOS Terminal ID](#mypos-terminal-id)
   
   
   
@@ -241,3 +244,41 @@ myPOSService.requestDeactivateTerminal(from: self) { (error) in
 }
 ```
 
+# Utilities
+
+## Default POS device serial number
+You can get/set a default serial number of a myPOS terminal to which to connect upon discovery
+### Objective-C
+```obj-c
+[myPOSService defaultSerialNumber];
+[myPOSService setDefaultPOSDeviceSerialNumber:@""];
+```
+### Swift
+```swift
+myPOSService.defaultSerialNumber()
+myPOSService.setDefaultPOSDeviceSerialNumber("")
+```
+
+## Preferred language
+You can get/set a prefered language for the POS device screens, by using the method below:
+### Objective-C
+```obj-c
+[myPOSService preferredLanguage];
+[myPOSService setPreferredLanguage:MPLanguageEnglish];
+```
+### Swift
+```swift
+myPOSService.preferredLanguage()
+myPOSService.setPreferredLanguage(.english)
+```
+
+## myPOS Terminal ID
+You can get the terminal ID of the connected myPOS device, by using the method below:
+### Objective-C
+```obj-c
+[myPOSService terminalId];
+```
+### Swift
+```swift
+myPOSService.terminalId()
+```

@@ -219,7 +219,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *
  *  @discussion Gets the connected POS terminal TID if available
  */
-+ (NSString *)terminalId;
++ (nullable NSString *)terminalId;
 
 /*!
  *  @method preferredLanguage:

@@ -22,7 +22,7 @@
  *  @method setTransactionReference:withType:
  *
  *  @param reference    Custom transaction reference can be set by the user to keep track of the transactions.
- *                      Must not exceed 20 characters.
+ *                      Must not exceed 50 characters.
  *  @param type         The type of the transaction reference.
  */
 - (void)setTransactionReference:(nullable NSString *)reference withType:(MPReferenceType)type;

@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     [myPOSService setAppName:@"myPOS Service Demo"];
-    [myPOSService setDefaultPOSDeviceSerialNumber:@"5A333906"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

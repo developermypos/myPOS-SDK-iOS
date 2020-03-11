@@ -1,4 +1,5 @@
-,DS_Store
+.DS_Store
 README.md
 myPOSServiceDemo.xcodeproj/project.xcworkspace/xcshareddata
 myPOSServiceDemo.xcodeproj/project.xcworkspace/xcuserdata
+myPOSServiceDemo.xcodeproj/xcuserdata/

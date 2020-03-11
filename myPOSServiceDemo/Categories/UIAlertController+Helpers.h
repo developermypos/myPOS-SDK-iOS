@@ -11,10 +11,10 @@
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message fromController:(UIViewController *)sender;
 
-+ (void)showCurrencyPickerFromController:(UITableViewController *)sender
++ (void)showCurrencyPickerFromController:(UITableViewController<UIPopoverPresentationControllerDelegate> *)sender
                         selectionHandler:(void(^)(MPCurrency currency))selectionHandler;
 
-+ (void)showReceiptOptionsFromController:(UIViewController *)sender
++ (void)showReceiptOptionsFromController:(UITableViewController<UIPopoverPresentationControllerDelegate> *)sender
                         selectionHandler:(void (^)(MPDeviceReceipt receiptType, NSString *actionTitle))selectionHandler;
 
 @end

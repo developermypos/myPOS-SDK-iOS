@@ -12,6 +12,7 @@
 
 @class MPRefundRequest;
 @class MPCheckoutRequest;
+@class MPReceiptData;
 
 /*!
  *  @enum MPDeviceMode
@@ -201,7 +202,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *
  *  @discussion Set a preferred language for the POS operations.
  *
- *  @param  language A language option from the enumerator.
+ *  @param  preferredLanguage A language option from the enumerator.
  */
 + (void)setPreferredLanguage:(MPLanguage)preferredLanguage;
 
@@ -220,6 +221,13 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *  @discussion Gets the connected POS terminal TID if available
  */
 + (nullable NSString *)terminalId;
+
+/*!
+ *  @method lastTransactionCardType:
+ *
+ *  @discussion Gets the card type (Mastercard, Visa, etc.) of the last processed transcation made
+ */
++ (nullable NSString *)lastTransactionCardType;
 
 /*!
  *  @method preferredLanguage:
@@ -279,9 +287,9 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 /*!
  *  @method quickCheckoutWithRequest:fromViewController:completion:
  *
- *  @param  payment             Payment request object containing information about the operation.
- *  @param  viewController      The view controller on which a loading HUD will be displayed. A new view controller will not be presented on top of it.
- *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *  @param  payment                     Payment request object containing information about the operation.
+ *  @param  viewController     The view controller on which a loading HUD will be displayed. A new view controller will not be presented on top of it.
+ *  @param  completion              A completion block that will be called upon operation completion. Can contain error if such occured during the process.
  *
  *  @see                        MPCheckoutRequest
  *  @see                        MPRequestCompletion
@@ -293,9 +301,9 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 /*!
  *  @method requestRefund:fromViewController:completion:
  *
- *  @param  payment             Refund request object containing information about the operation.
+ *  @param  refundRequest         Refund request object containing information about the operation.
  *  @param  viewController      The view controller from which to present the request.
- *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *  @param  completion               A completion block that will be called upon operation completion. Can contain error if such occured during the process.
  *
  *  @see                        MPRefundRequest
  *  @see                        MPRequestCompletion
@@ -308,10 +316,10 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 /*!
  *  @method requestRefund:fromViewController:skipConfirmation:completion:
  *
- *  @param  payment             Refund request object containing information about the operation.
- *  @param  viewController      The view controller from which to present the request.
- *  @param  skipConfirmation    Optional parameter to determine whether to allow editing of the amount after generating the request. Default is NO.
- *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *  @param  refundRequest            Refund request object containing information about the operation.
+ *  @param  viewController         The view controller from which to present the request.
+ *  @param  skipConfirmation     Optional parameter to determine whether to allow editing of the amount after generating the request. Default is NO.
+ *  @param  completion                  A completion block that will be called upon operation completion. Can contain error if such occured during the process.
  *
  *  @see                        MPRefundRequest
  *  @see                        MPRequestCompletion
@@ -325,9 +333,9 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 /*!
  *  @method requestQuickRefund:fromViewController:skipConfirmation:completion:
  *
- *  @param  payment             Refund request object containing information about the operation.
+ *  @param  refundRequest        Refund request object containing information about the operation.
  *  @param  viewController      The view controller on which a loading HUD will be displayed. A new view controller will not be presented on top of it.
- *  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+ *  @param  completion               A completion block that will be called upon operation completion. Can contain error if such occured during the process.
  *
  *  @see                        MPRefundRequest
  *  @see                        MPRequestCompletion
@@ -358,6 +366,16 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *  @see                        MPRequestCompletion
  */
 + (void)reprintLastReceiptWithCompletion:(nullable MPRequestCompletion)completion;
+
+/*!
+*  @method printReceipt:completion:
+*
+*  @param receiptData          The receipt data to be printed
+*  @param  completion          A completion block that will be called upon operation completion. Can contain error if such occured during the process.
+*
+*  @see                        MPRequestCompletion
+*/
++ (void)printReceipt:(nonnull MPReceiptData *)receiptData completion:(nullable MPRequestCompletion)completion;
 
 /*!
  *  @method requestActivateTerminalFromController:withCompletion:

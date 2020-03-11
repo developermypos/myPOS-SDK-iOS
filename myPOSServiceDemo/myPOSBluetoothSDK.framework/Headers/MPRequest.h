@@ -52,7 +52,7 @@
  *  @method setTransactionReference:
  *
  *  @param reference    Custom transaction reference can be set by the user to keep track of the transactions.
- *                      Must not exceed 50 characters.
+ *                      Must not exceed 20 characters.
  */
 - (void)setTransactionReference:(nullable NSString *)reference;
 

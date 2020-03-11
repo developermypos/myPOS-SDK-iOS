@@ -29,6 +29,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Refund request](#refund-requst)  
   * [Initiate checkout request](#initiate-checkout-request)
   * [Initiate refund request](#initiate-refund-request)
+  * [Print custom receipt](#print-custom-receipt)
   * [Reprint last receipt](#reprint-last-receipt)
 * [Terminal mangement](#terminal-management)
   * [Activate terminal](#activate-terminal)
@@ -38,6 +39,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Default POS device serial number](#default-pos-device-serial-number)
   * [Preferred language](#preferred-language)
   * [myPOS Terminal ID](#mypos-terminal-id)
+  * [Last Transaction Card Typed](#last-transaction-card-typed)
   
   
   
@@ -175,6 +177,34 @@ myPOSService.requestRefund(refundRequest, from: self) { (error) in
 }
 ```
 
+## Print custom receipt
+
+With this method host application could request print of custom receipt.. 
+
+### Objective-C
+```obj-c
+MPReceiptData *receiptData = [[MPReceiptData alloc] init];
+[receiptData addRowWithText:@"Some text"];
+[receiptData addEmptyRow];
+[receiptData addRowWithText:@"Center text!" aligned:MPReceiptTextAlignCenter withFontSize:MPReceiptTextFontSizeDouble];
+
+[myPOSService printReceipt:receiptData completion:^(NSError * _Nullable error) {
+    
+}];
+```
+### Swift
+```Swift
+let receiptData = MPReceiptData()
+receiptData.addRow(withText: "Normal row")
+receiptData.addEmptyRow()
+receiptData.addRow(withText: "Center text!", aligned: .center, with: .double)
+
+myPOSService.printReceipt(receiptData) { (error) in
+    
+}
+```
+
+
 ## Reprint last receipt
 
 With this method host application could request reprint of last transaction slip. 
@@ -281,4 +311,16 @@ You can get the terminal ID of the connected myPOS device, by using the method b
 ### Swift
 ```swift
 myPOSService.terminalId()
+```
+
+
+## Last Transaction Card Typed
+You can get the type (Mastercard, Visa, JCB, etc.) of the credit/debit card used during the last transaction, by using the method below:
+### Objective-C
+```obj-c
+[myPOSService lastTransactionCardType];
+```
+### Swift
+```swift
+myPOSService.lastTransactionCardType()
 ```

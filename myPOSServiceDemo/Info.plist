@@ -47,6 +47,8 @@
 		<string>com.paxsz.iPOS</string>
 		<string>com.paxsz.ipos</string>
 	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Please allow myPOS Service to communicate with POS devices while on background</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

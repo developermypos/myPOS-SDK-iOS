@@ -23,7 +23,9 @@
     [sender presentViewController:alertController animated:YES completion:nil];
 }
 
-+ (void)showCurrencyPickerFromController:(UITableViewController *)sender selectionHandler:(void(^)(MPCurrency currency))selectionHandler {
++ (void)showCurrencyPickerFromController:(UITableViewController<UIPopoverPresentationControllerDelegate> *)sender
+                        selectionHandler:(void(^)(MPCurrency currency))selectionHandler {
+    
     UIAlertAction     *okAction        = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"") style:UIAlertActionStyleCancel handler:nil];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Select currency", @"")
                                                                              message:nil
@@ -38,6 +40,7 @@
     }];
     
     if (alertController.popoverPresentationController) {
+        alertController.popoverPresentationController.delegate   = sender;
         alertController.popoverPresentationController.sourceView = [sender tableView];
         alertController.popoverPresentationController.sourceRect = [[sender tableView] rectForRowAtIndexPath:[sender.tableView indexPathForSelectedRow]];
     }
@@ -45,7 +48,9 @@
     [sender presentViewController:alertController animated:YES completion:nil];
 }
 
-+ (void)showReceiptOptionsFromController:(UIViewController *)sender selectionHandler:(void (^)(MPDeviceReceipt receiptType, NSString *actionTitle))selectionHandler {
++ (void)showReceiptOptionsFromController:(UITableViewController<UIPopoverPresentationControllerDelegate> *)sender
+                        selectionHandler:(void (^)(MPDeviceReceipt receiptType, NSString *actionTitle))selectionHandler {
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Select receipt print option", @"")
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
@@ -73,6 +78,12 @@
     [alertController addAction:afterConfirmation];
     [alertController addAction:onlyMerchantCopy];
     [alertController addAction:doNotPrint];
+    
+    if (alertController.popoverPresentationController) {
+        alertController.popoverPresentationController.delegate   = sender;
+        alertController.popoverPresentationController.sourceView = [sender tableView];
+        alertController.popoverPresentationController.sourceRect = [[sender tableView] rectForRowAtIndexPath:[sender.tableView indexPathForSelectedRow]];
+    }
     
     [sender presentViewController:alertController animated:YES completion:nil];
 }

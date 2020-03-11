@@ -11,3 +11,4 @@
 #import "MPRequest.h"
 #import "MPRefundRequest.h"
 #import "MPCheckoutRequest.h"
+#import "MPReceiptData.h"

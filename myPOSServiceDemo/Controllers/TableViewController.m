@@ -21,10 +21,13 @@ typedef enum : NSInteger {
     TableViewOperationRowQuickPayment, // 1
     TableViewOperationRowRefund,       // 2
     TableViewOperationRowQuickRefund,  // 3
-    TableViewOperationRowReprint,      // 4
-    TableViewOperationRowActivate,     // 5
-    TableViewOperationRowUpdate,       // 6
-    TableViewOperationRowDeactivate,   // 7
+    TableViewOperationRowPrintReceipt, // 4
+    TableViewOperationRowReprint,      // 5
+    TableViewOperationRowActivate,     // 6
+    TableViewOperationRowUpdate,       // 7
+    TableViewOperationRowDeactivate,   // 8
+    TableViewOperationRowTerminalID,   // 9
+    TableViewOperationRowLastCard,     // 10
 } TableViewOperationRow;
 
 typedef enum : NSInteger {
@@ -32,7 +35,7 @@ typedef enum : NSInteger {
     TableViewSettingRowPrintReceipt,    // 1
 } TableViewSettingRow;
 
-@interface TableViewController () {
+@interface TableViewController () <UIPopoverPresentationControllerDelegate> {
     MPCurrency _currency;
 }
 
@@ -92,6 +95,10 @@ static CGFloat const kFooterHeight = 30.0f;
                     [self makeQuickRefund];
                     break;
                     
+                case TableViewOperationRowPrintReceipt:
+                    [self printReceipt];
+                    break;
+                    
                 case TableViewOperationRowReprint:
                     [self reprintLastReceipt];
                     break;
@@ -106,6 +113,14 @@ static CGFloat const kFooterHeight = 30.0f;
                     
                 case TableViewOperationRowDeactivate:
                     [self deactivate];
+                    break;
+                    
+                case TableViewOperationRowTerminalID:
+                    [self getTerminalId];
+                    break;
+                    
+                case TableViewOperationRowLastCard:
+                    [self getLastUsedCardType];
                     break;
             }
             break;
@@ -123,8 +138,15 @@ static CGFloat const kFooterHeight = 30.0f;
             break;
     }
     
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (section == TableViewSectionOperations) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
+#pragma mark - UIPopoverPresentationControllerDelegate
+
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    [self deselectSelectedRow];
 }
 
 #pragma mark - Private Methods
@@ -177,6 +199,24 @@ static CGFloat const kFooterHeight = 30.0f;
     [myPOSService requestDeactivateTerminalFromController:self withCompletion:[self completion:@"Deactivateion"]];
 }
 
+- (void)printReceipt {
+    MPReceiptData *receiptData = [[MPReceiptData alloc] init];
+    [receiptData addRowWithText:@"Normal row"];
+    [receiptData addEmptyRow];
+    [receiptData addRowWithText:@"Left aligned single size"   aligned:MPReceiptTextAlignLeft   withFontSize:MPReceiptTextFontSizeSingle];
+    [receiptData addRowWithText:@"Center aligned single size" aligned:MPReceiptTextAlignCenter withFontSize:MPReceiptTextFontSizeSingle];
+    [receiptData addRowWithText:@"Right aligned single size"  aligned:MPReceiptTextAlignRight  withFontSize:MPReceiptTextFontSizeSingle];
+    [receiptData addEmptyRow];
+    [receiptData addRowWithText:@"LEFT DOUBLE"   aligned:MPReceiptTextAlignLeft   withFontSize:MPReceiptTextFontSizeDouble];
+    [receiptData addRowWithText:@"Center DOUBLE" aligned:MPReceiptTextAlignCenter withFontSize:MPReceiptTextFontSizeDouble];
+    [receiptData addRowWithText:@"RIGHT DOUBLE"  aligned:MPReceiptTextAlignRight  withFontSize:MPReceiptTextFontSizeDouble];
+    [receiptData addEmptyRow];
+    [receiptData addEmptyRow];
+    [receiptData addEmptyRow];
+    
+    [myPOSService printReceipt:receiptData completion:[self completion:@"Print receipt"]];
+}
+
 - (void)reprintLastReceipt {
     [myPOSService reprintLastReceiptWithCompletion:[self completion:@"Reprint last receipt"]];
 }
@@ -187,6 +227,7 @@ static CGFloat const kFooterHeight = 30.0f;
         self.currencyLabel.text = [Utils currencyToString:currency];
         
         [Utils saveCurrency:currency];
+        [self deselectSelectedRow];
     }];
 }
 
@@ -194,7 +235,28 @@ static CGFloat const kFooterHeight = 30.0f;
     [UIAlertController showReceiptOptionsFromController:self selectionHandler:^(MPDeviceReceipt receiptType, NSString *actionTitle) {
         [myPOSService setReceiptType:receiptType];
         [self.receiptTypeLabel setText:actionTitle];
+        [self deselectSelectedRow];
     }];
+}
+
+- (void)getTerminalId {
+    [UIAlertController showAlertWithTitle:@"Terminal ID"
+                                  message:[myPOSService terminalId]
+                           fromController:self];
+}
+
+- (void)getLastUsedCardType {
+    [UIAlertController showAlertWithTitle:@"Last used card type"
+                                  message:[myPOSService lastTransactionCardType]
+                           fromController:self];
+}
+
+- (void)deselectSelectedRow {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    
+    if (selectedIndexPath) {
+        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+    }
 }
 
 #pragma mark - Helpers

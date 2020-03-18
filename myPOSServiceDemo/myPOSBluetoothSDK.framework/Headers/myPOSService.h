@@ -13,6 +13,7 @@
 @class MPRefundRequest;
 @class MPCheckoutRequest;
 @class MPReceiptData;
+@class MPTransactionData;
 
 /*!
  *  @enum MPDeviceMode
@@ -223,13 +224,6 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 + (nullable NSString *)terminalId;
 
 /*!
- *  @method lastTransactionCardType:
- *
- *  @discussion Gets the card type (Mastercard, Visa, etc.) of the last processed transcation made
- */
-+ (nullable NSString *)lastTransactionCardType;
-
-/*!
  *  @method preferredLanguage:
  *
  *  @discussion Gets the preferred language for the POS operations.
@@ -242,6 +236,13 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *  @discussion Getter for the default serial number of a POS device.
  */
 + (NSString * _Nullable)defaultSerialNumber;
+
+/*!
+ *  @method lastTranscationData:
+ *
+ *  @discussion Getter for the data of the last processed transaction on the POS device.
+ */
++ (MPTransactionData * _Nullable)lastTranscationData;
 
 /*!
  *  @method setReceiptType:

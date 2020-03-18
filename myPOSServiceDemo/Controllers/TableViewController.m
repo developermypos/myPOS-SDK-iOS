@@ -27,7 +27,7 @@ typedef enum : NSInteger {
     TableViewOperationRowUpdate,       // 7
     TableViewOperationRowDeactivate,   // 8
     TableViewOperationRowTerminalID,   // 9
-    TableViewOperationRowLastCard,     // 10
+    TableViewOperationRowLastTrnData,  // 10
 } TableViewOperationRow;
 
 typedef enum : NSInteger {
@@ -119,8 +119,8 @@ static CGFloat const kFooterHeight = 30.0f;
                     [self getTerminalId];
                     break;
                     
-                case TableViewOperationRowLastCard:
-                    [self getLastUsedCardType];
+                case TableViewOperationRowLastTrnData:
+                    [self getLastTransactionData];
                     break;
             }
             break;
@@ -245,9 +245,9 @@ static CGFloat const kFooterHeight = 30.0f;
                            fromController:self];
 }
 
-- (void)getLastUsedCardType {
+- (void)getLastTransactionData {
     [UIAlertController showAlertWithTitle:@"Last used card type"
-                                  message:[myPOSService lastTransactionCardType]
+                                  message:[[myPOSService lastTranscationData] description]
                            fromController:self];
 }
 

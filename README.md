@@ -40,8 +40,8 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Preferred language](#preferred-language)
   * [myPOS Terminal ID](#mypos-terminal-id)
   * [Last Transaction Data](#last-transaction-data)
+  * [Has Printer](#has-printer)
   * [Is Connected](#is-connected)
-  * [Has Printer](#has-rpinter)
   
   
   

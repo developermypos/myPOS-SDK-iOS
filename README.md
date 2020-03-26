@@ -40,6 +40,8 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Preferred language](#preferred-language)
   * [myPOS Terminal ID](#mypos-terminal-id)
   * [Last Transaction Data](#last-transaction-data)
+  * [Is Connected](#is-connected)
+  * [Has Printer](#has-rpinter)
   
   
   
@@ -323,4 +325,28 @@ You can get the data of the last processed trnasaction on the POS device, by usi
 ### Swift
 ```swift
 myPOSService.lastTransactionData()
+```
+
+
+## Has Printer
+You can check whether the POS device has a printer available.
+### Objective-C
+```obj-c
+[myPOSService hasPrinter];
+```
+### Swift
+```swift
+myPOSService.hasPrinter()
+```
+
+
+## Is Connected
+You can check whether the there is an active connection to a POS device.
+### Objective-C
+```obj-c
+[myPOSService isConnected];
+```
+### Swift
+```swift
+myPOSService.isConnected()
 ```

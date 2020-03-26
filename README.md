@@ -39,7 +39,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Default POS device serial number](#default-pos-device-serial-number)
   * [Preferred language](#preferred-language)
   * [myPOS Terminal ID](#mypos-terminal-id)
-  * [Last Transaction Card Typed](#last-transaction-card-typed)
+  * [Last Transaction Data](#last-transaction-data)
   
   
   
@@ -314,13 +314,13 @@ myPOSService.terminalId()
 ```
 
 
-## Last Transaction Card Typed
-You can get the type (Mastercard, Visa, JCB, etc.) of the credit/debit card used during the last transaction, by using the method below:
+## Last Transaction Data
+You can get the data of the last processed trnasaction on the POS device, by using the method below:
 ### Objective-C
 ```obj-c
-[myPOSService lastTransactionCardType];
+[myPOSService lastTransactionData];
 ```
 ### Swift
 ```swift
-myPOSService.lastTransactionCardType()
+myPOSService.lastTransactionData()
 ```

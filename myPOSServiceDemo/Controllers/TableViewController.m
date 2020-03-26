@@ -28,6 +28,8 @@ typedef enum : NSInteger {
     TableViewOperationRowDeactivate,   // 8
     TableViewOperationRowTerminalID,   // 9
     TableViewOperationRowLastTrnData,  // 10
+    TableViewOperationRowHasPrinter,   // 11
+    TableViewOperationRowIsConnection, // 12
 } TableViewOperationRow;
 
 typedef enum : NSInteger {
@@ -121,6 +123,14 @@ static CGFloat const kFooterHeight = 30.0f;
                     
                 case TableViewOperationRowLastTrnData:
                     [self getLastTransactionData];
+                    break;
+                    
+                case TableViewOperationRowHasPrinter:
+                    [self checkPrinter];
+                    break;
+                    
+                case TableViewOperationRowIsConnection:
+                    [self checkConnection];
                     break;
             }
             break;
@@ -237,6 +247,18 @@ static CGFloat const kFooterHeight = 30.0f;
         [self.receiptTypeLabel setText:actionTitle];
         [self deselectSelectedRow];
     }];
+}
+
+- (void)checkPrinter {
+    [UIAlertController showAlertWithTitle:@"Printer status"
+                                  message:[myPOSService hasPrinter] ? @"Has printer" : @"Does not have printer"
+                           fromController:self];
+}
+
+- (void)checkConnection {
+    [UIAlertController showAlertWithTitle:@"Connection status"
+                                  message:[myPOSService isConnected] ? @"Connected" : @"Not connected"
+                           fromController:self];
 }
 
 - (void)getTerminalId {

@@ -217,6 +217,20 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 + (void)setDefaultPOSDeviceSerialNumber:(nullable NSString *)serialNumber;
 
 /*!
+ *  @method isConnected:
+ *
+ *  @discussion A flag stating whether a connection with a myPOS POS device is currently active.
+ */
++ (BOOL)isConnected;
+
+/*!
+ *  @method hasPrinter:
+ *
+ *  @discussion A flag stating whether a the connected myPOS device has a printer.
+ */
++ (BOOL)hasPrinter;
+
+/*!
  *  @method terminalId:
  *
  *  @discussion Gets the connected POS terminal TID if available

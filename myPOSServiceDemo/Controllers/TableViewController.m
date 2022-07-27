@@ -256,9 +256,7 @@ static CGFloat const kFooterHeight = 30.0f;
 }
 
 - (void)checkConnection {
-    [UIAlertController showAlertWithTitle:@"Connection status"
-                                  message:[myPOSService isConnected] ? @"Connected" : @"Not connected"
-                           fromController:self];
+    [myPOSService isConnectedFromViewController:self completion:[self completion:@"Check connection"]];
 }
 
 - (void)getTerminalId {

@@ -39,7 +39,7 @@ static NSString * const kInitializedSegue = @"initialized";
 #pragma mark - Actions
 
 - (IBAction)standard:(id)sender {
-    [self initializeSDKForDeviceMode:MPPOSDeviceModeStandard];
+    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern];
 }
 
 - (IBAction)modern:(id)sender {

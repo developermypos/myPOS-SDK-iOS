@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,8 @@
 		1DB5D9CF1C43982F002B4643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5D9CE1C43982F002B4643 /* main.m */; };
 		1DB5D9D81C43982F002B4643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9D61C43982F002B4643 /* Main.storyboard */; };
 		1DB5D9DD1C43982F002B4643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */; };
-		1DE43F351DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */; };
-		1DE43F361DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8BB44A782891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */; };
+		8BB44A792891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1DE43F361DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Embed Frameworks */,
+				8BB44A792891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +54,7 @@
 		1DB5D9D71C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DB5D9DC1C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DB5D9DE1C43982F002B4643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = myPOSBluetoothSDK.framework; path = myPOSServiceDemo/myPOSBluetoothSDK.framework; sourceTree = "<group>"; };
+		8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = myPOSBluetoothSDK.xcframework; path = myPOSServiceDemo/myPOSBluetoothSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB44A782891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Frameworks */,
 				1D0AEA2A1EEAAC5100F4A8CD /* ExternalAccessory.framework in Frameworks */,
-				1DE43F351DCCB5AA00EE6E41 /* myPOSBluetoothSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */,
-				1DE43F331DCCB55700EE6E41 /* myPOSBluetoothSDK.framework */,
+				8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,6 +388,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YG25Y935ZY;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -395,7 +396,10 @@
 				);
 				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mypos.serviceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,6 +420,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YG25Y935ZY;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -423,7 +428,10 @@
 				);
 				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mypos.serviceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

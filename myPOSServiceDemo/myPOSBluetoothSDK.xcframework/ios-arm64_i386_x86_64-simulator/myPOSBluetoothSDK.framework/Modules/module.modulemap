@@ -1,0 +1,6 @@
+framework module myPOSBluetoothSDK {
+  umbrella header "myPOSBluetoothSDK.h"
+
+  export *
+  module * { export * }
+}

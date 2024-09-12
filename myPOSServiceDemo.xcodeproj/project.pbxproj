@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,8 @@
 		1DB5D9CF1C43982F002B4643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5D9CE1C43982F002B4643 /* main.m */; };
 		1DB5D9D81C43982F002B4643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9D61C43982F002B4643 /* Main.storyboard */; };
 		1DB5D9DD1C43982F002B4643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */; };
-		8BB44A782891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */; };
-		8BB44A792891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84109F252C92DC08005611F3 /* myPOSBluetoothSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84109F232C92DC00005611F3 /* myPOSBluetoothSDK.xcframework */; };
+		84109F262C92DC08005611F3 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84109F232C92DC00005611F3 /* myPOSBluetoothSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8BB44A792891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */,
+				84109F262C92DC08005611F3 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +54,7 @@
 		1DB5D9D71C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DB5D9DC1C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DB5D9DE1C43982F002B4643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = myPOSBluetoothSDK.xcframework; path = myPOSServiceDemo/myPOSBluetoothSDK.xcframework; sourceTree = "<group>"; };
+		84109F232C92DC00005611F3 /* myPOSBluetoothSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = myPOSBluetoothSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB44A782891781B00E0E8B2 /* myPOSBluetoothSDK.xcframework in Frameworks */,
+				84109F252C92DC08005611F3 /* myPOSBluetoothSDK.xcframework in Frameworks */,
 				1D0AEA2A1EEAAC5100F4A8CD /* ExternalAccessory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */,
-				8BB44A762891781500E0E8B2 /* myPOSBluetoothSDK.xcframework */,
+				84109F232C92DC00005611F3 /* myPOSBluetoothSDK.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 					"$(PROJECT_DIR)/myPOSServiceDemo",
 				);
 				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,7 +427,7 @@
 					"$(PROJECT_DIR)/myPOSServiceDemo",
 				);
 				INFOPLIST_FILE = myPOSServiceDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

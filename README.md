@@ -53,6 +53,8 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 ## Privacy Info plist keys
 NSBluetoothPeripheralUsageDescription
+NSLocalNetworkUsageDescription
+NSBonjourServices -> <array><string>_lnp._tcp.</string></array>
 
 # Initialization
 ## Make sure the framework is imported
@@ -64,19 +66,36 @@ NSBluetoothPeripheralUsageDescription
 ### Swift
 If you are using swift, you will need to create a bridging header and import the framework there. For more information about bridging headers, please visit  [Apple's documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html).
 
-##Call the initialization method
+## Call the initialization method
 Call the initialization method while passing the currency for financial operations (purchase, refund, etc.)
-### Objective-C
-```obj-c                                                                    
-[myPOSService startInitializationFromController:self
-                                 withCompletion:^(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error) {
-                                     
-                                 }];
-```
-### Swift
-```Swift
-myPOSService.startInitialization(from: self) { (posDeviceMode, error) in
 
+### Objective-C Bluetooth Modes
+```obj-c                                                                    
+[myPOSService startInitializationFromController:<#T##UIViewController#>
+                             forPOSDeviceInMode:<#T##MPPOSDeviceMode#>
+                                 withCompletion:^(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error) {
+                                 
+                                 }];                                 
+```
+### Swift Bluetooth Modes
+```Swift
+myPOSService.startInitialization(from: <#T##UIViewController#>, forPOSDeviceIn: <#T##MPPOSDeviceMode#>) { <#MPPOSDeviceMode#>, <#(any Error)?#> in
+    
+}
+```
+
+### Objective-C WiFi Mode
+```obj-c                                                                    
+[myPOSService startInitializationFromController:<#T##UIViewController#>
+                                         forURL:<#T##String#>
+                                 withCompletion:^(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error) {
+                                 
+                                 }];                                 
+```
+### Swift WiFi Mode
+```Swift
+myPOSService.startInitialization(from: <#T##UIViewController#>, forURL: <#T##String#>) { <#MPPOSDeviceMode#>, <#(any Error)?#> in
+    
 }
 ```
 

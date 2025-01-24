@@ -154,6 +154,12 @@ typedef void (^MPRequestCompletion)(NSError * _Nullable error);
  */
 typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error);
 
+@protocol MPServiceDelegate <NSObject>
+@optional
+
+- (void)didReceiveStageInfo:(nullable NSString *)method stage:(nullable NSString *)stage status:(nullable NSString *)status;
+
+@end
 
 @interface myPOSService : NSObject
 
@@ -178,6 +184,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *  @discussion             Start initialization of the app.
  *
  *  @param  viewController  The view controller from which an initialization controller will be presented.
+ *  @param  check      Is it just checking for already paired device
  *  @param  posDeviceMode   The mode of the POS device with which to establish a connection.
  *  @param  completion      A completion block that will be called upon operation completion.
  *                          Contains the POS device mode in which the SDK was initialized
@@ -187,6 +194,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
  *  @see                    MPPOSDeviceMode
  */
 + (void)startInitializationFromController:(nonnull UIViewController *)viewController
+                     checkingPairedDevice:(BOOL)check
                        forPOSDeviceInMode:(MPPOSDeviceMode)posDeviceMode
                            withCompletion:(nullable MPInitializationCompletion)completion;
 
@@ -207,6 +215,17 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 + (void)startInitializationFromController:(nonnull UIViewController *)viewController
                                    forURL:(nonnull NSString *)url
                            withCompletion:(nullable MPInitializationCompletion)completion;
+
+- (void)setDelegate:(nullable id<MPServiceDelegate>)delegate;
+
+/*!
+ *  @method setDelegate:
+ *
+ *  @discussion Set a delegate object..
+ *
+ *  @param  delegate A delegate.
+ */
++ (void)setDelegate:(nullable id<MPServiceDelegate>)delegate;
 
 /*!
  *  @method setAppName:

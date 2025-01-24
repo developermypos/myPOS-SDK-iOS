@@ -37,7 +37,7 @@ typedef enum : NSInteger {
     TableViewSettingRowPrintReceipt,    // 1
 } TableViewSettingRow;
 
-@interface TableViewController () <UIPopoverPresentationControllerDelegate> {
+@interface TableViewController () <UIPopoverPresentationControllerDelegate, MPServiceDelegate> {
     MPCurrency _currency;
 }
 
@@ -56,6 +56,8 @@ static CGFloat const kFooterHeight = 30.0f;
     
     _currency               = [Utils savedCurrency];
     self.currencyLabel.text = [Utils currencyToString:_currency];
+    
+    [myPOSService setDelegate:self];
 }
 
 #pragma mark - Table View Delegate
@@ -157,6 +159,14 @@ static CGFloat const kFooterHeight = 30.0f;
 
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
     [self deselectSelectedRow];
+}
+
+#pragma mark - MPServiceDelegate
+
+- (void)didReceiveStageInfo:(NSString *)method stage:(NSString *)stage status:(NSString *)status {
+    NSLog(@"Request METHOD: %@", method);
+    NSLog(@"Request STAGE: %@", stage);
+    NSLog(@"Request STATUS: %@", status);
 }
 
 #pragma mark - Private Methods

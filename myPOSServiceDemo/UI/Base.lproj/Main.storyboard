@@ -412,8 +412,15 @@
                                             <action selector="modern:" destination="tKN-qJ-r59" eventType="touchUpInside" id="M70-s0-GOv"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgy-24-LgU">
+                                        <rect key="frame" x="102" y="120" width="171" height="30"/>
+                                        <state key="normal" title="Check for paired devices"/>
+                                        <connections>
+                                            <action selector="checkPairedBluetooth:" destination="tKN-qJ-r59" eventType="touchUpInside" id="xMF-jX-4zM"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3H-lf-oh3">
-                                        <rect key="frame" x="153.5" y="120" width="68" height="30"/>
+                                        <rect key="frame" x="153.5" y="170" width="68" height="30"/>
                                         <state key="normal" title="K300 Wifi"/>
                                         <connections>
                                             <action selector="wifi:" destination="tKN-qJ-r59" eventType="touchUpInside" id="xty-bj-hQ5"/>
@@ -426,10 +433,12 @@
                                     <constraint firstItem="YQJ-Lr-rAK" firstAttribute="centerX" secondItem="jW2-io-QTi" secondAttribute="centerX" id="5yK-Tx-4xk"/>
                                     <constraint firstItem="vVW-OC-HKD" firstAttribute="centerX" secondItem="jW2-io-QTi" secondAttribute="centerX" id="7sP-q8-Nm7"/>
                                     <constraint firstItem="YQJ-Lr-rAK" firstAttribute="top" secondItem="jW2-io-QTi" secondAttribute="top" constant="20" id="CCF-dl-4N2"/>
+                                    <constraint firstItem="hgy-24-LgU" firstAttribute="centerX" secondItem="jW2-io-QTi" secondAttribute="centerX" id="M1N-3D-c5S"/>
+                                    <constraint firstItem="hgy-24-LgU" firstAttribute="top" secondItem="qca-Ek-Ff0" secondAttribute="bottom" constant="20" id="YDp-TE-2C3"/>
                                     <constraint firstItem="qca-Ek-Ff0" firstAttribute="top" secondItem="YQJ-Lr-rAK" secondAttribute="bottom" constant="20" id="eSm-cG-f1d"/>
+                                    <constraint firstItem="K3H-lf-oh3" firstAttribute="top" secondItem="hgy-24-LgU" secondAttribute="bottom" constant="20" id="hWS-bk-qPA"/>
                                     <constraint firstItem="K3H-lf-oh3" firstAttribute="centerX" secondItem="jW2-io-QTi" secondAttribute="centerX" id="hyW-fw-sRn"/>
                                     <constraint firstItem="qca-Ek-Ff0" firstAttribute="centerX" secondItem="jW2-io-QTi" secondAttribute="centerX" id="jAI-Ef-Zqg"/>
-                                    <constraint firstItem="K3H-lf-oh3" firstAttribute="top" secondItem="qca-Ek-Ff0" secondAttribute="bottom" constant="20" id="jVk-gq-yMH"/>
                                 </constraints>
                             </view>
                         </subviews>

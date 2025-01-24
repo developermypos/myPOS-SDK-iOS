@@ -32,6 +32,7 @@
     [super viewDidAppear:animated];
     
     _initialized = NO;
+    [myPOSService setDelegate:self];
 }
 
 static NSString * const kInitializedSegue = @"initialized";
@@ -39,15 +40,19 @@ static NSString * const kInitializedSegue = @"initialized";
 #pragma mark - Actions
 
 - (IBAction)standard:(id)sender {
-    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern];
+    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern checkOnly:NO];
 }
 
 - (IBAction)modern:(id)sender {
-    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern];
+    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern checkOnly:NO];
 }
 
 - (IBAction)startInitialization:(id)sender {
-    [self initializeSDKForDeviceMode:MPPOSDeviceModeUnknown];
+    [self initializeSDKForDeviceMode:MPPOSDeviceModeUnknown checkOnly:NO];
+}
+
+- (IBAction)checkPairedBluetooth:(id)sender {
+    [self initializeSDKForDeviceMode:MPPOSDeviceModeModern checkOnly:YES];
 }
 
 - (IBAction)wifi:(id)sender {
@@ -68,8 +73,9 @@ static NSString * const kInitializedSegue = @"initialized";
 
 #pragma mark - Private Methods
 
-- (void)initializeSDKForDeviceMode:(MPPOSDeviceMode)mode {
+- (void)initializeSDKForDeviceMode:(MPPOSDeviceMode)mode checkOnly:(BOOL)check {
     [myPOSService startInitializationFromController:self
+                               checkingPairedDevice:check
                                  forPOSDeviceInMode:mode
                                      withCompletion:^(MPPOSDeviceMode posDeviceMode, NSError * _Nullable error) {
                                          _initialized = error == nil;

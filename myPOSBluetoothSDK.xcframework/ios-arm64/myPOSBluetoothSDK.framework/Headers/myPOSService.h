@@ -133,6 +133,94 @@ typedef NS_ENUM(int, MPReferenceType) {
 };
 
 /*!
+ *  @enum PosStatus
+ *
+ *  @discussion POS Status types depending on the stage and status of each method
+ */
+typedef NS_ENUM(int, PosStatus) {
+    POS_STATUS_SUCCESS                                  = 0,
+    POS_STATUS_PENDING_USER_INTERACTION                 = 1,
+    POS_STATUS_USER_CANCEL                              = 2,
+    POS_STATUS_INTERNAL_ERROR                           = 3,
+    POS_STATUS_TERMINAL_BUSY                            = 4,
+    POS_STATUS_UNSUPPORTED_SDK_VERSION                  = 5,
+    POS_STATUS_NO_UPDATE_FOUND                          = 6,
+    POS_STATUS_MANDATORY_UPDATE                         = 7,
+    POS_STATUS_OPTIONAL_UPDATE                          = 8,
+    POS_STATUS_POS_UPDATING                             = 9,
+    POS_STATUS_ACTIVATION_REQUIRED                      = 10,
+    POS_STATUS_PROCESSING                               = 11,
+    POS_STATUS_DEACTIVATION_NOT_COMPLETED               = 12,
+    POS_STATUS_ACTIVATION_NOT_REQUIRED                  = 13,
+    POS_STATUS_ACTIVATION_NOT_COMPLETED                 = 14,
+    POS_STATUS_WRONG_ACTIVATION_CODE                    = 15,
+    POS_STATUS_WRONG_DEACTIVATION_CODE                  = 16,
+    POS_STATUS_WAIT_ACTIVATION_CODE                     = 17,
+    POS_STATUS_WAIT_DEACTIVATION_CODE                   = 18,
+    POS_STATUS_UPDATE_NOT_COMPLETED                     = 19,
+    POS_STATUS_TRANSACTION_NOT_FOUND                    = 20,
+    POS_STATUS_NO_PRINTER_AVAILABLE                     = 21,
+    POS_STATUS_NO_PAPER                                 = 22,
+    POS_STATUS_WRONG_AMOUNT                             = 23,
+    POS_STATUS_NO_CARD_FOUND                            = 24,
+    POS_STATUS_NOT_SUPPORTED_CARD                       = 25,
+    POS_STATUS_CARD_CHIP_ERROR                          = 26,
+    POS_STATUS_INVALID_PIN                              = 27,
+    POS_STATUS_MAX_PIN_COUNT_EXCEEDED                   = 28,
+    POS_STATUS_PIN_CHECK_ONLINE                         = 29,
+    POS_STATUS_SUCCESS_ACTIVATION                       = 31,
+    POS_STATUS_SUCCESS_DEACTIVATION                     = 32,
+    POS_STATUS_SUCCESS_UPDATE                           = 33,
+    POS_STATUS_SUCCESS_PURCHASE                         = 34,
+    POS_STATUS_SUCCESS_REFUND                           = 35,
+    POS_STATUS_SUCCESS_REPRINT_RECEIPT                  = 37,
+    POS_STATUS_DOWNLOADING_CERTIFICATES_IN_PROGRESS     = 38,
+    POS_STATUS_DOWNLOADING_CERTIFICATES_COMPLETED       = 39,
+    POS_STATUS_INCORRECT_PRINT_DATA                     = 40,
+    POS_STATUS_INCORRECT_LOGO_INDEX                     = 41,
+    POS_STATUS_SUCCESS_PRINT_RECEIPT                    = 42,
+    POS_STATUS_INVALID_OR_MISSING_PREAUTH_CODE          = 43,
+    POS_STATUS_INVALID_PREAUTH_AMOUNT                   = 44,
+    POS_STATUS_PREAUTH_TRAN_BEEN_COMPLETED              = 45,
+    POS_STATUS_INVALID_PAN                              = 46,
+    POS_STATUS_INVALID_EXP_DATE                         = 47,
+    POS_STATUS_PREAUTH_COMPLETING                       = 48,
+    POS_STATUS_PREAUTH_CANCELING                        = 49,
+    POS_STATUS_SUCCESS_PREAUTH_COMPLETION               = 50,
+    POS_STATUS_SUCCESS_PREAUTH_CANCELLATION             = 51,
+    POS_STATUS_GIFTCARD_ACTIVATING                      = 52,
+    POS_STATUS_GIFTCARD_DEACTIVATING                    = 53,
+    POS_STATUS_GIFTCARD_BALANCE_CHECK                   = 54,
+    POS_STATUS_SUCCESS_GIFTCARD_ACTIVATION              = 55,
+    POS_STATUS_SUCCESS_GIFTCARD_DEACTIVATION            = 56,
+    POS_STATUS_SUCCESS_GIFTCARD_BALANCE_CHECK           = 57,
+    POS_STATUS_WRONG_TIPPING_AMOUNT                     = 58,
+    POS_STATUS_WRONG_PASSWORD                           = 59,
+    POS_STATUS_REVERSING_TRANSACTION                    = 60,
+    POS_STATUS_SUCCESS_REVERSAL                         = 61,
+    POS_STATUS_REVERSAL_NOT_FOUND                       = 62,
+    POS_STATUS_INVALID_OPERATOR_CODE                    = 63,
+    POS_STATUS_INVALID_REFERENCE_NUMBER_TYPE            = 64,
+    POS_STATUS_INVALID_REFERENCE_NUMBER                 = 65,
+    POS_STATUS_PREAUTH_NOT_SUPPORTED_PARAM              = 66,
+    POS_STATUS_PAYMENT_REQUEST_WRONG_RECIPIENT          = 67,
+    POS_STATUS_PAYMENT_REQUEST_INVALID_EXP_DAYS         = 68,
+    POS_STATUS_PAYMENT_INVALID_REQUEST_CODE             = 69,
+    POS_STATUS_TRANSACTION_FORBIDDEN                    = 70,
+    POS_STATUS_SUCCESS_PREAUTH                          = 71,
+    POS_STATUS_SUCCESS_PING                             = 72,
+    POS_STATUS_PING_FAILED                              = 73,
+    POS_STATUS_PRESENT_CARD_SCREEN                      = 74,
+    POS_STATUS_SELECT_DCC_SCREEN                        = 75,
+    POS_STATUS_ENTER_PIN_SCREEN                         = 76,
+    POS_STATUS_DCC_BEEN_SELECTED                        = 77,
+    POS_STATUS_PASSWORD_REQUIRED                        = 78,
+    POS_STATUS_COM_ERROR                                = 79,
+    POS_STATUS_UNKNOWN                                  = 80,
+};
+
+
+/*!
  *  @discussion     An operation completion method with a nullable error.
  *                  If operation has completed successfully, the error will be nil,
  *                  otherwise will contain information what went wrong with the request.
@@ -157,7 +245,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 @protocol MPServiceDelegate <NSObject>
 @optional
 
-- (void)didReceiveStageInfo:(nullable NSString *)method stage:(nullable NSString *)stage status:(nullable NSString *)status;
+- (void)didReceiveStageInfo:(PosStatus)posInfo;
 
 @end
 

@@ -32,7 +32,6 @@
     [super viewDidAppear:animated];
     
     _initialized = NO;
-    [myPOSService setDelegate:self];
 }
 
 static NSString * const kInitializedSegue = @"initialized";

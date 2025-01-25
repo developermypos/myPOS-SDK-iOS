@@ -163,10 +163,8 @@ static CGFloat const kFooterHeight = 30.0f;
 
 #pragma mark - MPServiceDelegate
 
-- (void)didReceiveStageInfo:(NSString *)method stage:(NSString *)stage status:(NSString *)status {
-    NSLog(@"Request METHOD: %@", method);
-    NSLog(@"Request STAGE: %@", stage);
-    NSLog(@"Request STATUS: %@", status);
+- (void)didReceiveStageInfo:(PosStatus)posInfo {
+    // Receive updates regarding operation states here.
 }
 
 #pragma mark - Private Methods

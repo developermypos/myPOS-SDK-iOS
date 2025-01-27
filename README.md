@@ -42,6 +42,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   * [Last Transaction Data](#last-transaction-data)
   * [Has Printer](#has-printer)
   * [Is Connected](#is-connected)
+* [POS Info Statuses](#pos-info-statuses)
   
   
   
@@ -192,13 +193,13 @@ request.setTransactionReference("my_transaction_reference")
 
 ## Initiate checkout request
 
-ith this method host application initates checkout command to th terminal. 
+Using this method host application initates checkout command to the terminal. 
 
 ### Objective-C
 ```obj-c                                                                
-[myPOSService checkoutWithRequest:checkoutRequest
-               fromViewController:self
-                       completion:^(NSError * _Nullable error) {
+    [myPOSService checkoutWithRequest:checkoutRequest
+                   fromViewController:self
+                           completion:^(NSError * _Nullable error) {
                            
                        }];
 ```
@@ -210,7 +211,20 @@ myPOSService.checkout(with: checkoutRequest, from: self) { (error) in
     
 }
 ```
-
+### Objective-C - Quick checkout (SDK's UI not triggered)
+```obj-c                                                                
+[myPOSService quickCheckoutWithRequest:checkoutRequest
+                    fromViewController:self
+                            completion:^(NSError * _Nullable error) {
+                           
+                       }];
+```
+### Swift  - Quick checkout (SDK's UI not triggered)
+```Swift
+myPOSService.quickCheckout(with: checkoutRequest, from: self, completion) { (error) in
+    
+}
+```
 
 ## Initiate refund request
 
@@ -227,6 +241,20 @@ With this method host application could initiate refund transaction to the custo
 ### Swift
 ```Swift
 myPOSService.requestRefund(refundRequest, from: self) { (error) in
+    
+}
+```
+### Objective-C - Quick refund (SDK's UI not triggered)
+```obj-c                                                                
+[myPOSService requestQuickRefund:refundRequest
+         fromViewController:self
+                 completion:^(NSError * _Nullable error) {
+                     
+                 }];
+```
+### Swift  - Quick refund (SDK's UI not triggered)
+```Swift
+myPOSService.requestQuickRefund(refundRequest, from: self) { (error) in
     
 }
 ```
@@ -406,82 +434,83 @@ myPOSService.isConnected()
 
 # Pos Info Statuses
 
-    * POS_STATUS_PENDING_USER_INTERACTION POS terminal received Purchase or Refund operation. Waiting for user to provide card for the operation.
 
-    * POS_STATUS_USER_CANCEL Current operation is terminated due user has cancelled it manually from the POS terminal.
+* POS_STATUS_PENDING_USER_INTERACTION POS terminal received Purchase or Refund operation. Waiting for user to provide card for the operation.
 
-    * POS_STATUS_INTERNAL_ERROR Current operation is terminated due internal error has occured.
+* POS_STATUS_USER_CANCEL Current operation is terminated due user has cancelled it manually from the POS terminal.
 
-    * POS_STATUS_TERMINAL_BUSY Current operation is terminated due POS terminal is busy with another operation.
+* POS_STATUS_INTERNAL_ERROR Current operation is terminated due internal error has occured.
 
-    * POS_STATUS_UNSUPPORTED_SDK_VERSION Current operation is terminated due POS terminal version is not compatiable with myPOS SDK version.
+* POS_STATUS_TERMINAL_BUSY Current operation is terminated due POS terminal is busy with another operation.
 
-    * POS_STATUS_NO_UPDATE_FOUND Operation Update is terminated due no update is available for the POS terminal.
+* POS_STATUS_UNSUPPORTED_SDK_VERSION Current operation is terminated due POS terminal version is not compatiable with myPOS SDK version.
 
-    * POS_STATUS_MANDATORY_UPDATE Current operation is terminated due mandatory update is necessary. Update operation is performed automatically.
+* POS_STATUS_NO_UPDATE_FOUND Operation Update is terminated due no update is available for the POS terminal.
 
-    * POS_STATUS_OPTIONAL_UPDATE No operation is performed after this status. An optional update is available for the POS terminal.
+* POS_STATUS_MANDATORY_UPDATE Current operation is terminated due mandatory update is necessary. Update operation is performed automatically.
 
-    * POS_STATUS_POS_UPDATING Terminal received an Update operation and started the procedure.
+* POS_STATUS_OPTIONAL_UPDATE No operation is performed after this status. An optional update is available for the POS terminal.
 
-    * POS_STATUS_ACTIVATION_REQUIRED Current operation is terminated due POS terminal is not activated. It is necessary to activate the POS terminal in order to perform operations.
+* POS_STATUS_POS_UPDATING Terminal received an Update operation and started the procedure.
 
-    * POS_STATUS_PROCESSING This status informs that a communication with the Host is performed on operation Purchase, Refund, Activate or Deactivate.
+* POS_STATUS_ACTIVATION_REQUIRED Current operation is terminated due POS terminal is not activated. It is necessary to activate the POS terminal in order to perform operations.
 
-    * POS_STATUS_DEACTIVATION_NOT_COMPLETED Operation Deactivate finished unsuccessfully.
+* POS_STATUS_PROCESSING This status informs that a communication with the Host is performed on operation Purchase, Refund, Activate or Deactivate.
 
-    * POS_STATUS_ACTIVATION_NOT_REQUIRED Operation Activate is terminated due POS terminal is already activated.
+* POS_STATUS_DEACTIVATION_NOT_COMPLETED Operation Deactivate finished unsuccessfully.
 
-    * POS_STATUS_ACTIVATION_NOT_COMPLETED Operation Activate finished unsuccessfully.
+* POS_STATUS_ACTIVATION_NOT_REQUIRED Operation Activate is terminated due POS terminal is already activated.
 
-    * POS_STATUS_WRONG_ACTIVATION_CODE Operation Activate is terminated due wrong activation code.
+* POS_STATUS_ACTIVATION_NOT_COMPLETED Operation Activate finished unsuccessfully.
 
-    * POS_STATUS_WRONG_DEACTIVATION_CODE Operation Deactivate is terminated due wrong deactivation code.
+* POS_STATUS_WRONG_ACTIVATION_CODE Operation Activate is terminated due wrong activation code.
 
-    * POS_STATUS_WAIT_ACTIVATION_CODE POS terminal received Activate operation and is waiting for user to provide an activation code.
+* POS_STATUS_WRONG_DEACTIVATION_CODE Operation Deactivate is terminated due wrong deactivation code.
 
-    * POS_STATUS_WAIT_DEACTIVATION_CODE POS terminal received Dectivate operation and is waiting for user to provide an deactivation code.
+* POS_STATUS_WAIT_ACTIVATION_CODE POS terminal received Activate operation and is waiting for user to provide an activation code.
 
-    * POS_STATUS_UPDATE_NOT_COMPLETED Operation Update finished unsuccessfully.
+* POS_STATUS_WAIT_DEACTIVATION_CODE POS terminal received Dectivate operation and is waiting for user to provide an deactivation code.
 
-    * POS_STATUS_TRANSACTION_NOT_FOUND When performing operation Reprint last receipt. Last transaction is not found and the operation is terminated.
+* POS_STATUS_UPDATE_NOT_COMPLETED Operation Update finished unsuccessfully.
 
-    * POS_STATUS_NO_PRINTER_AVAILABLE Current operation(Print or Reprint last receipt) is terminated due POS device has no printer hardware.
+* POS_STATUS_TRANSACTION_NOT_FOUND When performing operation Reprint last receipt. Last transaction is not found and the operation is terminated.
 
-    * POS_STATUS_NO_PAPER Current operation(Print or Reprint last receipt) is terminated due no paper is available in the POS terminal. Current operation(Purchase or Refund) completed successfully, but receipt won't be printed due no paper is available in the POS terminal.
+* POS_STATUS_NO_PRINTER_AVAILABLE Current operation(Print or Reprint last receipt) is terminated due POS device has no printer hardware.
 
-    * POS_STATUS_WRONG_AMOUNT Current operation is terminated due wrong amount is provided to Purchase or Refund operation.
+* POS_STATUS_NO_PAPER Current operation(Print or Reprint last receipt) is terminated due no paper is available in the POS terminal. Current operation(Purchase or Refund) completed successfully, but receipt won't be printed due no paper is available in the POS terminal.
 
-    * POS_STATUS_NO_CARD_FOUND Current operation is terminated due no card is provided.
+* POS_STATUS_WRONG_AMOUNT Current operation is terminated due wrong amount is provided to Purchase or Refund operation.
 
-    * POS_STATUS_NOT_SUPPORTED_CARD The provided card is not supported. POS terminal is waiting for supported card.
+* POS_STATUS_NO_CARD_FOUND Current operation is terminated due no card is provided.
 
-    * POS_STATUS_CARD_CHIP_ERROR Current operation is terminated due card chip reading failed.
+* POS_STATUS_NOT_SUPPORTED_CARD The provided card is not supported. POS terminal is waiting for supported card.
 
-    * POS_STATUS_INVALID_PIN Invalid PIN. POS Terminal is waiting for another PIN.
+* POS_STATUS_CARD_CHIP_ERROR Current operation is terminated due card chip reading failed.
 
-    * POS_STATUS_MAX_PIN_COUNT_EXCEEDED Current operation is terminated due wrong PINs count has exceeded.
+* POS_STATUS_INVALID_PIN Invalid PIN. POS Terminal is waiting for another PIN.
 
-    * POS_STATUS_PIN_CHECK_ONLINE This status informs that PIN validation is performed online. Current operation continue.
+* POS_STATUS_MAX_PIN_COUNT_EXCEEDED Current operation is terminated due wrong PINs count has exceeded.
 
-    * POS_STATUS_SUCCESS_ACTIVATION Operation Activate finished with success.
+* POS_STATUS_PIN_CHECK_ONLINE This status informs that PIN validation is performed online. Current operation continue.
 
-    * POS_STATUS_SUCCESS_DEACTIVATION Operation Dectivate finished with success.
+* POS_STATUS_SUCCESS_ACTIVATION Operation Activate finished with success.
 
-    * POS_STATUS_SUCCESS_UPDATE Operation Update finished with success.
+* POS_STATUS_SUCCESS_DEACTIVATION Operation Dectivate finished with success.
 
-    * POS_STATUS_SUCCESS_PURCHASE Operation Purchase finished with success.
+* POS_STATUS_SUCCESS_UPDATE Operation Update finished with success.
 
-    * POS_STATUS_SUCCESS_REFUND Operation Refund finished with success.
+* POS_STATUS_SUCCESS_PURCHASE Operation Purchase finished with success.
 
-    * POS_STATUS_SUCCESS_REPRINT_RECEIPT Operation Reprint last receipt finished with success.
+* POS_STATUS_SUCCESS_REFUND Operation Refund finished with success.
 
-    * POS_STATUS_SUCCESS_PRINT_RECEIPT Operation Print finished with success.
+* POS_STATUS_SUCCESS_REPRINT_RECEIPT Operation Reprint last receipt finished with success.
 
-    * POS_STATUS_DOWNLOADING_CERTIFICATES_IN_PROGRESS This status informs that the SDK is downloading certificates from the POS Terminal.
+* POS_STATUS_SUCCESS_PRINT_RECEIPT Operation Print finished with success.
 
-    * POS_STATUS_DOWNLOADING_CERTIFICATES_COMPLETED Certificated downloading is completed successfully.
+* POS_STATUS_DOWNLOADING_CERTIFICATES_IN_PROGRESS This status informs that the SDK is downloading certificates from the POS Terminal.
 
-    * POS_STATUS_INCORRECT_PRINT_DATA Operation Print is terminated due incorrect print data is provided.
+* POS_STATUS_DOWNLOADING_CERTIFICATES_COMPLETED Certificated downloading is completed successfully.
 
-    * POS_STATUS_INCORRECT_LOGO_INDEX Operation Print is terminated due incorrect logo index is provided.
+* POS_STATUS_INCORRECT_PRINT_DATA Operation Print is terminated due incorrect print data is provided.
+
+* POS_STATUS_INCORRECT_LOGO_INDEX Operation Print is terminated due incorrect logo index is provided.

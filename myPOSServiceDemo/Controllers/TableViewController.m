@@ -30,6 +30,7 @@ typedef enum : NSInteger {
     TableViewOperationRowLastTrnData,  // 10
     TableViewOperationRowHasPrinter,   // 11
     TableViewOperationRowIsConnection, // 12
+    TableViewOperationRowUnpair,          // 13
 } TableViewOperationRow;
 
 typedef enum : NSInteger {
@@ -133,6 +134,9 @@ static CGFloat const kFooterHeight = 30.0f;
                     
                 case TableViewOperationRowIsConnection:
                     [self checkConnection];
+                    break;
+                case TableViewOperationRowUnpair:
+                    [self unpairDevice];
                     break;
             }
             break;
@@ -265,6 +269,16 @@ static CGFloat const kFooterHeight = 30.0f;
 
 - (void)checkConnection {
     [myPOSService isConnectedFromViewController:self completion:[self completion:@"Check connection"]];
+}
+
+- (void)unpairDevice {
+    [myPOSService unpairDeviceWithCompletion:^(NSError * _Nullable error){
+            [self.navigationController popViewControllerAnimated:YES];
+        
+            [UIAlertController showAlertWithTitle:error ? @"An error occured"        : @"Operation completed"
+                                          message:error ? error.localizedDescription : [NSString stringWithFormat:@"%@ completed successfully", @"Unpair device"]
+                                   fromController:self];
+        }];
 }
 
 - (void)getTerminalId {

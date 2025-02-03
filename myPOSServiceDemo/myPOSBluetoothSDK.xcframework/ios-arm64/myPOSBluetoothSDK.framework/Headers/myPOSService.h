@@ -558,4 +558,11 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 + (void)isConnectedFromViewController:(nonnull UIViewController *)viewController
                            completion:(nullable MPRequestCompletion)completion;
 
+/*!
+ *  @method unpairDevice:
+ *
+ *  @discussion Unpair currently connected POS device.
+ */
++ (void)unpairDeviceWithCompletion:(nullable MPRequestCompletion)completion;
+
 @end

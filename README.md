@@ -431,6 +431,21 @@ You can check whether the there is an active connection to a POS device.
 myPOSService.isConnected()
 ```
 
+## Unpair connected device
+You can unpair a POS device that is currently connected to the mobile app.
+### Objective-C
+```obj-c
+[myPOSService unpairDeviceWithCompletion:^(NSError * _Nullable error) {
+    
+}];
+```
+### Swift
+```swift
+myPOSService.unpairDevice() { (error) in
+    
+}
+```
+
 
 # Pos Info Statuses
 

@@ -186,7 +186,8 @@ static CGFloat const kFooterHeight = 30.0f;
 - (void)makeQuickPurchase {
     MPCheckoutRequest *checkoutRequest = [MPCheckoutRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
                                                                        title:@"Some item"
-                                                                    currency:_currency];
+                                                                    currency:_currency
+                                                             receiptReceiver:@"johndoe.mypos@gmail.com"];
     
     [checkoutRequest setTransactionReference:@"my_transaction_reference" withType:MPReferenceTypeNumber];
     NSLog(@"Request: %@", checkoutRequest);
@@ -204,7 +205,8 @@ static CGFloat const kFooterHeight = 30.0f;
 - (void)makeQuickRefund {
     MPRefundRequest *refundRequest = [MPRefundRequest requestWithTotal:[NSDecimalNumber decimalNumberWithString:@"1.00"]
                                                                  title:@"Some item"
-                                                              currency:_currency];
+                                                              currency:_currency
+                                                       receiptReceiver:@"johndoe.mypos@gmail.com"];
     NSLog(@"Request: %@", refundRequest);
     [myPOSService requestQuickRefund:refundRequest fromViewController:self completion:[self completion:@"Refund"]];
 }

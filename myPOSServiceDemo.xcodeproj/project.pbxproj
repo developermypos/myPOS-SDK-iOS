@@ -17,8 +17,8 @@
 		1DB5D9CF1C43982F002B4643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5D9CE1C43982F002B4643 /* main.m */; };
 		1DB5D9D81C43982F002B4643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9D61C43982F002B4643 /* Main.storyboard */; };
 		1DB5D9DD1C43982F002B4643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB5D9DB1C43982F002B4643 /* LaunchScreen.storyboard */; };
-		8BBC6D1C2D64E608008537A7 /* myPOSBluetoothSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC6D1A2D64E5FF008537A7 /* myPOSBluetoothSDK.xcframework */; };
-		8BBC6D1D2D64E608008537A7 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC6D1A2D64E5FF008537A7 /* myPOSBluetoothSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8BA217052D692E7D001C3BEF /* myPOSBluetoothSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA217032D692E73001C3BEF /* myPOSBluetoothSDK.xcframework */; };
+		8BA217062D692E7D001C3BEF /* myPOSBluetoothSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA217032D692E73001C3BEF /* myPOSBluetoothSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8BBC6D1D2D64E608008537A7 /* myPOSBluetoothSDK.xcframework in Embed Frameworks */,
+				8BA217062D692E7D001C3BEF /* myPOSBluetoothSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +54,7 @@
 		1DB5D9D71C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DB5D9DC1C43982F002B4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DB5D9DE1C43982F002B4643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BBC6D1A2D64E5FF008537A7 /* myPOSBluetoothSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = myPOSBluetoothSDK.xcframework; sourceTree = "<group>"; };
+		8BA217032D692E73001C3BEF /* myPOSBluetoothSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = myPOSBluetoothSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBC6D1C2D64E608008537A7 /* myPOSBluetoothSDK.xcframework in Frameworks */,
+				8BA217052D692E7D001C3BEF /* myPOSBluetoothSDK.xcframework in Frameworks */,
 				1D0AEA2A1EEAAC5100F4A8CD /* ExternalAccessory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +161,7 @@
 		1DE43F321DCCB55700EE6E41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8BBC6D1A2D64E5FF008537A7 /* myPOSBluetoothSDK.xcframework */,
+				8BA217032D692E73001C3BEF /* myPOSBluetoothSDK.xcframework */,
 				1D0AEA291EEAAC5100F4A8CD /* ExternalAccessory.framework */,
 			);
 			name = Frameworks;

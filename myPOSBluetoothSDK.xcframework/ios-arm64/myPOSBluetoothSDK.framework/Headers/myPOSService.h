@@ -246,6 +246,7 @@ typedef void (^MPInitializationCompletion)(MPPOSDeviceMode posDeviceMode, NSErro
 @optional
 
 - (void)didReceiveStageInfo:(PosStatus)posInfo;
+- (void)urlConnectionFailed:(nullable NSString *)code;
 
 @end
 

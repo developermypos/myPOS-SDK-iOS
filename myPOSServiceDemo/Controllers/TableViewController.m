@@ -171,6 +171,10 @@ static CGFloat const kFooterHeight = 30.0f;
     // Receive updates regarding operation states here.
 }
 
+- (void)urlConnectionFailed:(NSString *)code {
+    
+}
+
 #pragma mark - Private Methods
 
 - (void)makePurchase {

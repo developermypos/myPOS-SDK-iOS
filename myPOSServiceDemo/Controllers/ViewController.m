@@ -12,7 +12,7 @@
 
 #import "UIAlertController+Helpers.h"
 
-@interface ViewController() {
+@interface ViewController() <MPServiceDelegate> {
     BOOL _initialized;
 }
 
@@ -32,6 +32,7 @@
     [super viewDidAppear:animated];
     
     _initialized = NO;
+    [myPOSService setDelegate:self];
 }
 
 static NSString * const kInitializedSegue = @"initialized";
@@ -95,5 +96,15 @@ static NSString * const kInitializedSegue = @"initialized";
                                      }];
 }
 
+
+#pragma mark - MPServiceDelegate
+
+- (void)didReceiveStageInfo:(PosStatus)posInfo {
+    // Receive updates regarding operation states here.
+}
+
+- (void)urlConnectionFailed:(NSString *)code {
+    // Fails or timeouts while connecting to devices on Wifi.
+}
 
 @end
